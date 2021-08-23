@@ -59,7 +59,7 @@ const changeCat = () => {
 	const bodyParams = {
 		action: 'action=talash_get_categories',
 		nonce: '&security=' + talashPublicApi.nonce,
-		data: '&searchify_data=' + JSON.stringify( {'postType': postType.value, 'authorID': authorData.value} )
+		data: '&talash_data=' + JSON.stringify( {'postType': postType.value, 'authorID': authorData.value} )
 	}
 	const args = bodyParams.action + bodyParams.nonce + bodyParams.data
 

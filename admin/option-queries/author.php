@@ -12,18 +12,18 @@ namespace Talash\Admin;
 
 class Author_Query {
 
-	private static function searchify_query($query, $arr) {
+	private static function talash_query($query, $arr) {
 		global $wpdb;
 	
 		$results = $wpdb->get_results( $wpdb->prepare( $query, $arr ) );
 		return $results;
 	}
 
-	public static function searchify_get_all_author() {	
+	public static function talash_get_all_author() {	
 		global $wpdb;
 		$data = [];
 
-		$data = self::searchify_query(
+		$data = self::talash_query(
 			"SELECT DISTINCT users.ID, users.display_name
 			FROM {$wpdb->prefix}users users
 			INNER JOIN {$wpdb->prefix}posts posts
@@ -43,14 +43,14 @@ class Author_Query {
 		return $data;
 	}
 
-	public static function searchify_get_author_by_pt($post_type) {
+	public static function get_author_by_pt($post_type) {
 		global $wpdb;
 		$data = [];
 
 		$post_types = explode(', ', $post_type);
 		$post_types = "'" . implode("','", $post_types) . "'";
 
-		$data = self::searchify_query(
+		$data = self::talash_query(
 			"SELECT DISTINCT users.ID, users.display_name
 			FROM {$wpdb->prefix}users users
 			INNER JOIN {$wpdb->prefix}posts posts
@@ -71,14 +71,14 @@ class Author_Query {
 		return $data;
 	}
 
-	public static function searchify_get_author_by_pt_cat($searchify_data) {
+	public static function get_author_by_pt_cat($searchify_data) {
 		global $wpdb;
 		$data = [];
 
 		$post_types = explode(', ', $searchify_data->postType);
 		$post_types = "'" . implode("','", $post_types) . "'";
 
-		$data = self::searchify_query(
+		$data = self::talash_query(
 			"SELECT DISTINCT users.ID, users.display_name
 			FROM {$wpdb->prefix}users users
 			INNER JOIN {$wpdb->prefix}posts posts
@@ -102,11 +102,11 @@ class Author_Query {
 		return $data;
 	}
 
-	public static function searchify_get_author_by_cat($cat_id) {
+	public static function get_author_by_cat($cat_id) {
 		global $wpdb;
 		$data = [];
 
-		$data = self::searchify_query(
+		$data = self::talash_query(
 			"SELECT DISTINCT users.ID, users.display_name
 			FROM {$wpdb->prefix}users users
 			INNER JOIN {$wpdb->prefix}posts posts

@@ -2,7 +2,7 @@
 /**
  * WordPress Customizer Class.
  *
- * @package    searchify
+ * @package    talash
  * @author     sourav926 
  */
 namespace Talash\Admin;

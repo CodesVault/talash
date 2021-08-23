@@ -96,7 +96,7 @@ function search() {
 		const bodyParams = {
 			action: 'action=get_search_results',
 			nonce: '&security=' + talashPublicApi.nonce,
-			data: '&searchify_data=' + JSON.stringify( data )
+			data: '&talash_data=' + JSON.stringify( data )
 		}
 		const args = bodyParams.action + bodyParams.nonce + bodyParams.data
 		fetchData(args, false)

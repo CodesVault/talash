@@ -4,15 +4,15 @@
  *
  * @link       https://abmsourav.com/
  *
- * @package    searchify
+ * @package    talash
  * @author     sourav926 
  */
 namespace Talash\Admin;
 
 
-class Searchify_Query {
+class Talash_Query {
 
-	private static function searchify_query($query, $args) {
+	private static function talash_query($query, $args) {
 		global $wpdb;
 	
 		$results = $wpdb->get_results( $wpdb->prepare( $query, $args ) );
@@ -37,21 +37,21 @@ class Searchify_Query {
 		return $args;
 	}
 
-	public static function search_by_postType($searchify_data) {
+	public static function search_by_postType($search_data) {
 		global $wpdb;
 
 		$data = [];
 		$args = [
 			'status' => 'publish',
-			'start_date' => $searchify_data->dateRangeStart,
-			'end_date' => $searchify_data->dateRangeEnd
+			'start_date' => $search_data->dateRangeStart,
+			'end_date' => $search_data->dateRangeEnd
 		];
-		$args = self::set_search_key($searchify_data->searchifySearch, $args);
-		$post_type = explode(', ', $searchify_data->postType);
+		$args = self::set_search_key($search_data->searchifySearch, $args);
+		$post_type = explode(', ', $search_data->postType);
 		$post_type = "'" . implode("','", $post_type) . "'";
 
-		if ( $searchify_data->searchifySearch ) {
-			$data = self::searchify_query(
+		if ( $search_data->searchifySearch ) {
+			$data = self::talash_query(
 				"SELECT DISTINCT posts.ID, posts.post_title, posts.post_author
 				FROM {$wpdb->prefix}posts posts
 				WHERE posts.post_status = %s
@@ -63,7 +63,7 @@ class Searchify_Query {
 				$args
 			);
 		} else {
-			$data = self::searchify_query(
+			$data = self::talash_query(
 				"SELECT DISTINCT posts.ID, posts.post_title, posts.post_author
 				FROM {$wpdb->prefix}posts posts
 				WHERE posts.post_status = %s
@@ -81,19 +81,19 @@ class Searchify_Query {
 		return $data;
 	}
 
-	public static function search_by_cat($searchify_data) {
+	public static function search_by_cat($search_data) {
 		global $wpdb;
 
 		$data = [];
 		$args = [
 			'publish',
-			$searchify_data->dateRangeStart,
-			$searchify_data->dateRangeEnd
+			$search_data->dateRangeStart,
+			$search_data->dateRangeEnd
 		];
-		$args = self::set_search_key($searchify_data->searchifySearch, $args);
+		$args = self::set_search_key($search_data->searchifySearch, $args);
 
-		if ( $searchify_data->searchifySearch ) {
-			$data = self::searchify_query(
+		if ( $search_data->searchifySearch ) {
+			$data = self::talash_query(
 				"SELECT DISTINCT posts.ID, posts.post_title, terms.name as cat_name
 				FROM {$wpdb->prefix}posts posts
 				INNER JOIN {$wpdb->prefix}term_relationships term_rel
@@ -101,7 +101,7 @@ class Searchify_Query {
 				INNER JOIN {$wpdb->prefix}terms terms
 					ON terms.term_id = term_rel.term_taxonomy_id
 				WHERE posts.post_status = %s
-					AND term_rel.term_taxonomy_id IN($searchify_data->catID)
+					AND term_rel.term_taxonomy_id IN($search_data->catID)
 					AND posts.post_date between %s and %s
 					AND ((posts.post_title LIKE %s OR posts.post_title LIKE %s OR posts.post_title LIKE %s)
 						OR (posts.post_content LIKE %s OR posts.post_content LIKE %s OR posts.post_content LIKE %s))
@@ -109,7 +109,7 @@ class Searchify_Query {
 				$args
 			);
 		} else {
-			$data = self::searchify_query(
+			$data = self::talash_query(
 				"SELECT DISTINCT posts.ID, posts.post_title, terms.name as cat_name
 				FROM {$wpdb->prefix}posts posts
 				INNER JOIN {$wpdb->prefix}term_relationships term_rel
@@ -117,7 +117,7 @@ class Searchify_Query {
 				INNER JOIN {$wpdb->prefix}terms terms
 					ON terms.term_id = term_rel.term_taxonomy_id
 				WHERE posts.post_status = %s
-					AND term_rel.term_taxonomy_id IN($searchify_data->catID)
+					AND term_rel.term_taxonomy_id IN($search_data->catID)
 					AND posts.post_date between %s and %s
 				ORDER BY posts.post_date DESC",
 				$args
@@ -131,23 +131,23 @@ class Searchify_Query {
 		return $data;
 	}
 
-	public static function search_by_author($searchify_data) {
+	public static function search_by_author($search_data) {
 		global $wpdb;
 
 		$data = [];
 		$args = [
 			'publish',
-			$searchify_data->dateRangeStart,
-			$searchify_data->dateRangeEnd
+			$search_data->dateRangeStart,
+			$search_data->dateRangeEnd
 		];
-		$args = self::set_search_key($searchify_data->searchifySearch, $args);
+		$args = self::set_search_key($search_data->searchifySearch, $args);
 
-		if ( $searchify_data->searchifySearch ) {
-			$data = self::searchify_query(
+		if ( $search_data->searchifySearch ) {
+			$data = self::talash_query(
 				"SELECT DISTINCT posts.ID, posts.post_title, posts.post_author
 				FROM {$wpdb->prefix}posts posts
 				WHERE posts.post_status = %s
-					AND posts.post_author IN($searchify_data->authorID)
+					AND posts.post_author IN($search_data->authorID)
 					AND posts.post_date between %s and %s
 					AND ((posts.post_title LIKE %s OR posts.post_title LIKE %s OR posts.post_title LIKE %s)
 						OR (posts.post_content LIKE %s OR posts.post_content LIKE %s OR posts.post_content LIKE %s))
@@ -155,11 +155,11 @@ class Searchify_Query {
 				$args
 			);
 		} else {
-			$data = self::searchify_query(
+			$data = self::talash_query(
 				"SELECT DISTINCT posts.ID, posts.post_title, posts.post_author
 				FROM {$wpdb->prefix}posts posts
 				WHERE posts.post_status = %s
-					AND posts.post_author IN($searchify_data->authorID)
+					AND posts.post_author IN($search_data->authorID)
 					AND posts.post_date between %s and %s
 				ORDER BY posts.post_date DESC",
 				$args
@@ -173,7 +173,7 @@ class Searchify_Query {
 		return $data;
 	}
 
-	private static function add_cats_in_query_result($data, $searchify_data) {
+	private static function add_cats_in_query_result($data, $search_data) {
 		global $wpdb;
 
 		$post_id = [];
@@ -181,9 +181,9 @@ class Searchify_Query {
 			array_push( $post_id, $post->ID );
 		}
 		$post_id = "'" . implode("','", $post_id) . "'";
-		$cat_ids = explode(', ', $searchify_data->catID);
+		$cat_ids = explode(', ', $search_data->catID);
 
-		$cats = self::searchify_query(
+		$cats = self::talash_query(
 			"SELECT posts.ID, terms.term_id, terms.name
 			FROM {$wpdb->prefix}posts posts
 			INNER JOIN {$wpdb->prefix}term_relationships term_rel
@@ -217,21 +217,21 @@ class Searchify_Query {
 		return $data;
 	}
 
-	public static function search_by_postType_cat($searchify_data) {
+	public static function search_by_postType_cat($search_data) {
 		global $wpdb;
 
 		$data = [];
 		$args = [
 			'publish',
-			$searchify_data->dateRangeStart,
-			$searchify_data->dateRangeEnd
+			$search_data->dateRangeStart,
+			$search_data->dateRangeEnd
 		];
-		$args = self::set_search_key($searchify_data->searchifySearch, $args);
-		$post_type = explode(', ', $searchify_data->postType);
+		$args = self::set_search_key($search_data->searchifySearch, $args);
+		$post_type = explode(', ', $search_data->postType);
 		$post_type = "'" . implode("','", $post_type) . "'";
 
-		if ( $searchify_data->searchifySearch ) {
-			$data = self::searchify_query(
+		if ( $search_data->searchifySearch ) {
+			$data = self::talash_query(
 				"SELECT DISTINCT posts.ID, posts.post_title
 				FROM {$wpdb->prefix}posts posts
 				INNER JOIN {$wpdb->prefix}term_relationships term_rel
@@ -239,7 +239,7 @@ class Searchify_Query {
 				INNER JOIN {$wpdb->prefix}terms terms
 					ON terms.term_id = term_rel.term_taxonomy_id
 				WHERE posts.post_status = %s
-					AND term_rel.term_taxonomy_id IN ($searchify_data->catID)
+					AND term_rel.term_taxonomy_id IN ($search_data->catID)
 					AND posts.post_type IN ($post_type)
 					AND posts.post_date between %s and %s
 					AND ((posts.post_title LIKE %s OR posts.post_title LIKE %s OR posts.post_title LIKE %s)
@@ -248,7 +248,7 @@ class Searchify_Query {
 				$args
 			);
 		} else {
-			$data = self::searchify_query(
+			$data = self::talash_query(
 				"SELECT DISTINCT posts.ID, posts.post_title
 				FROM {$wpdb->prefix}posts posts
 				INNER JOIN {$wpdb->prefix}term_relationships term_rel
@@ -256,7 +256,7 @@ class Searchify_Query {
 				INNER JOIN {$wpdb->prefix}terms terms
 					ON terms.term_id = term_rel.term_taxonomy_id
 				WHERE posts.post_status = %s
-					AND term_rel.term_taxonomy_id IN ($searchify_data->catID)
+					AND term_rel.term_taxonomy_id IN ($search_data->catID)
 					AND posts.post_type IN ($post_type)
 					AND posts.post_date between %s and %s
 				ORDER BY posts.post_date DESC",
@@ -267,31 +267,31 @@ class Searchify_Query {
 			return $data;
 		}
 
-		$data = self::add_cats_in_query_result($data, $searchify_data);
+		$data = self::add_cats_in_query_result($data, $search_data);
 		
 		return $data;
 	}
 
-	public static function search_by_postType_author($searchify_data) {
+	public static function search_by_postType_author($search_data) {
 		global $wpdb;
 
 		$data = [];
 		$args = [
 			'publish',
-			$searchify_data->dateRangeStart,
-			$searchify_data->dateRangeEnd
+			$search_data->dateRangeStart,
+			$search_data->dateRangeEnd
 		];
-		$args = self::set_search_key($searchify_data->searchifySearch, $args);
-		$post_type = explode(', ', $searchify_data->postType);
+		$args = self::set_search_key($search_data->searchifySearch, $args);
+		$post_type = explode(', ', $search_data->postType);
 		$post_type = "'" . implode("','", $post_type) . "'";
 
-		if ( $searchify_data->searchifySearch ) {
-			$data = self::searchify_query(
+		if ( $search_data->searchifySearch ) {
+			$data = self::talash_query(
 				"SELECT DISTINCT posts.ID, posts.post_title, posts.post_author
 				FROM {$wpdb->prefix}posts posts
 				WHERE posts.post_status = %s
 					AND posts.post_type IN ($post_type)
-					AND posts.post_author IN ($searchify_data->authorID)
+					AND posts.post_author IN ($search_data->authorID)
 					AND posts.post_date between %s and %s
 					AND ((posts.post_title LIKE %s OR posts.post_title LIKE %s OR posts.post_title LIKE %s)
 						OR (posts.post_content LIKE %s OR posts.post_content LIKE %s OR posts.post_content LIKE %s))
@@ -299,12 +299,12 @@ class Searchify_Query {
 				$args
 			);
 		} else {
-			$data = self::searchify_query(
+			$data = self::talash_query(
 				"SELECT DISTINCT posts.ID, posts.post_title, posts.post_author
 				FROM {$wpdb->prefix}posts posts
 				WHERE posts.post_status = %s
 					AND posts.post_type IN ($post_type)
-					AND posts.post_author IN ($searchify_data->authorID)
+					AND posts.post_author IN ($search_data->authorID)
 					AND posts.post_date between %s and %s
 				ORDER BY posts.post_date DESC",
 				$args
@@ -318,19 +318,19 @@ class Searchify_Query {
 		return $data;
 	}
 
-	public static function search_by_cat_author($searchify_data) {
+	public static function search_by_cat_author($search_data) {
 		global $wpdb;
 
 		$data = [];
 		$args = [
 			'publish',
-			$searchify_data->dateRangeStart,
-			$searchify_data->dateRangeEnd
+			$search_data->dateRangeStart,
+			$search_data->dateRangeEnd
 		];
-		$args = self::set_search_key($searchify_data->searchifySearch, $args);
+		$args = self::set_search_key($search_data->searchifySearch, $args);
 
-		if ( $searchify_data->searchifySearch ) {
-			$data = self::searchify_query(
+		if ( $search_data->searchifySearch ) {
+			$data = self::talash_query(
 				"SELECT DISTINCT posts.ID, posts.post_title, posts.post_author
 				FROM {$wpdb->prefix}posts posts
 				INNER JOIN {$wpdb->prefix}term_relationships term_rel
@@ -338,8 +338,8 @@ class Searchify_Query {
 				INNER JOIN {$wpdb->prefix}terms terms
 					ON terms.term_id = term_rel.term_taxonomy_id
 				WHERE posts.post_status = %s
-					AND term_rel.term_taxonomy_id IN ($searchify_data->catID)
-					AND posts.post_author IN ($searchify_data->authorID)
+					AND term_rel.term_taxonomy_id IN ($search_data->catID)
+					AND posts.post_author IN ($search_data->authorID)
 					AND posts.post_date between %s and %s
 					AND ((posts.post_title LIKE %s OR posts.post_title LIKE %s OR posts.post_title LIKE %s)
 						OR (posts.post_content LIKE %s OR posts.post_content LIKE %s OR posts.post_content LIKE %s))
@@ -347,7 +347,7 @@ class Searchify_Query {
 				$args
 			);
 		} else {
-			$data = self::searchify_query(
+			$data = self::talash_query(
 				"SELECT DISTINCT posts.ID, posts.post_title, posts.post_author
 				FROM {$wpdb->prefix}posts posts
 				INNER JOIN {$wpdb->prefix}term_relationships term_rel
@@ -355,8 +355,8 @@ class Searchify_Query {
 				INNER JOIN {$wpdb->prefix}terms terms
 					ON terms.term_id = term_rel.term_taxonomy_id
 				WHERE posts.post_status = %s
-					AND term_rel.term_taxonomy_id IN ($searchify_data->catID)
-					AND posts.post_author IN ($searchify_data->authorID)
+					AND term_rel.term_taxonomy_id IN ($search_data->catID)
+					AND posts.post_author IN ($search_data->authorID)
 					AND posts.post_date between %s and %s
 				ORDER BY posts.post_date DESC",
 				$args
@@ -366,26 +366,26 @@ class Searchify_Query {
 			return $data;
 		}
 
-		$data = self::add_cats_in_query_result($data, $searchify_data);
+		$data = self::add_cats_in_query_result($data, $search_data);
 
 		return $data;
 	}
 
-	public static function search_by_postType_cat_author($searchify_data) {
+	public static function search_by_postType_cat_author($search_data) {
 		global $wpdb;
 
 		$data = [];
 		$args = [
 			'publish',
-			$searchify_data->dateRangeStart,
-			$searchify_data->dateRangeEnd,
+			$search_data->dateRangeStart,
+			$search_data->dateRangeEnd,
 		];
-		$args = self::set_search_key($searchify_data->searchifySearch, $args);
-		$post_type = explode(', ', $searchify_data->postType);
+		$args = self::set_search_key($search_data->searchifySearch, $args);
+		$post_type = explode(', ', $search_data->postType);
 		$post_type = "'" . implode("','", $post_type) . "'";
 
-		if ( $searchify_data->searchifySearch ) {
-			$data = self::searchify_query(
+		if ( $search_data->searchifySearch ) {
+			$data = self::talash_query(
 				"SELECT DISTINCT posts.ID, posts.post_title, posts.post_author
 				FROM {$wpdb->prefix}posts posts
 				INNER JOIN {$wpdb->prefix}term_relationships term_rel
@@ -393,9 +393,9 @@ class Searchify_Query {
 				INNER JOIN {$wpdb->prefix}terms terms
 					ON terms.term_id = term_rel.term_taxonomy_id
 				WHERE posts.post_status = %s
-					AND term_rel.term_taxonomy_id IN ($searchify_data->catID)
+					AND term_rel.term_taxonomy_id IN ($search_data->catID)
 					AND posts.post_type IN ($post_type)
-					AND posts.post_author IN ($searchify_data->authorID)
+					AND posts.post_author IN ($search_data->authorID)
 					AND posts.post_date between %s and %s
 					AND ((posts.post_title LIKE %s OR posts.post_title LIKE %s OR posts.post_title LIKE %s)
 						OR (posts.post_content LIKE %s OR posts.post_content LIKE %s OR posts.post_content LIKE %s))
@@ -403,7 +403,7 @@ class Searchify_Query {
 				$args
 			);
 		} else {
-			$data = self::searchify_query(
+			$data = self::talash_query(
 				"SELECT DISTINCT posts.ID, posts.post_title, posts.post_author
 				FROM {$wpdb->prefix}posts posts
 				INNER JOIN {$wpdb->prefix}term_relationships term_rel
@@ -411,9 +411,9 @@ class Searchify_Query {
 				INNER JOIN {$wpdb->prefix}terms terms
 					ON terms.term_id = term_rel.term_taxonomy_id
 				WHERE posts.post_status = %s
-					AND term_rel.term_taxonomy_id IN ($searchify_data->catID)
+					AND term_rel.term_taxonomy_id IN ($search_data->catID)
 					AND posts.post_type IN ($post_type)
-					AND posts.post_author IN ($searchify_data->authorID)
+					AND posts.post_author IN ($search_data->authorID)
 					AND posts.post_date between %s and %s
 				ORDER BY posts.post_date DESC",
 				$args
@@ -423,22 +423,22 @@ class Searchify_Query {
 			return $data;
 		}
 
-		$data = self::add_cats_in_query_result($data, $searchify_data);
+		$data = self::add_cats_in_query_result($data, $search_data);
 
 		return $data;
 	}
 
-	public static function search_by_keyword($searchify_data) {
+	public static function search_by_keyword($search_data) {
 		global $wpdb;
 
 		$args = [
 			'publish',
-			$searchify_data->dateRangeStart,
-			$searchify_data->dateRangeEnd,
+			$search_data->dateRangeStart,
+			$search_data->dateRangeEnd,
 		];
-		$args = self::set_search_key($searchify_data->searchifySearch, $args);
+		$args = self::set_search_key($search_data->searchifySearch, $args);
 
-		$data = self::searchify_query(
+		$data = self::talash_query(
 			"SELECT posts.ID, posts.post_title
 			FROM {$wpdb->prefix}posts posts
 			WHERE posts.post_status = %s
@@ -456,32 +456,33 @@ class Searchify_Query {
 		return $data;
 	}
 
-	public static function searchify_search_query($searchify_data) {
+	public static function talash_search_query($search_data) {
 		$data = '';
-		if ( $searchify_data->postType && $searchify_data->catID == '' && $searchify_data->authorID == '' ) {
+
+		if ( $search_data->postType && $search_data->catID == '' && $search_data->authorID == '' ) {
 			// only postTypes
-			$data = self::search_by_postType($searchify_data);
-		} elseif ( $searchify_data->postType == '' && $searchify_data->catID && $searchify_data->authorID == '' ) {
+			$data = self::search_by_postType($search_data);
+		} elseif ( $search_data->postType == '' && $search_data->catID && $search_data->authorID == '' ) {
 			// only categories
-			$data = self::search_by_cat($searchify_data);
-		} elseif ( $searchify_data->postType == '' && $searchify_data->catID == '' && $searchify_data->authorID ) {
+			$data = self::search_by_cat($search_data);
+		} elseif ( $search_data->postType == '' && $search_data->catID == '' && $search_data->authorID ) {
 			// only authors
-			$data = self::search_by_author($searchify_data);
-		} elseif ( $searchify_data->postType && $searchify_data->catID && $searchify_data->authorID == '' ) {
+			$data = self::search_by_author($search_data);
+		} elseif ( $search_data->postType && $search_data->catID && $search_data->authorID == '' ) {
 			// postTypes, categories
-			$data = self::search_by_postType_cat($searchify_data);
-		} elseif ( $searchify_data->postType && $searchify_data->catID == '' && $searchify_data->authorID ) {
+			$data = self::search_by_postType_cat($search_data);
+		} elseif ( $search_data->postType && $search_data->catID == '' && $search_data->authorID ) {
 			// postTypes, authors
-			$data = self::search_by_postType_author($searchify_data);
-		} elseif ( $searchify_data->postType == '' && $searchify_data->catID && $searchify_data->authorID ) {
+			$data = self::search_by_postType_author($search_data);
+		} elseif ( $search_data->postType == '' && $search_data->catID && $search_data->authorID ) {
 			// categories, authors
-			$data = self::search_by_cat_author($searchify_data);
-		} elseif ( $searchify_data->postType && $searchify_data->catID && $searchify_data->authorID ) {
+			$data = self::search_by_cat_author($search_data);
+		} elseif ( $search_data->postType && $search_data->catID && $search_data->authorID ) {
 			// postTypes, categories, authors
-			$data = self::search_by_postType_cat_author($searchify_data);
-		} elseif ( $searchify_data->searchifySearch && $searchify_data->postType == '' && $searchify_data->catID == '' && $searchify_data->authorID == '' ) {
+			$data = self::search_by_postType_cat_author($search_data);
+		} elseif ( $search_data->searchifySearch && $search_data->postType == '' && $search_data->catID == '' && $search_data->authorID == '' ) {
 			// only keyword
-			$data = self::search_by_keyword($searchify_data);
+			$data = self::search_by_keyword($search_data);
 		}
 
 		return $data;

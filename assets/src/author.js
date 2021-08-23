@@ -60,7 +60,7 @@ function changeAuthor() {
 	const bodyParams = {
 		action: 'action=talash_get_authors',
 		nonce: '&security=' + talashPublicApi.nonce,
-		data: '&searchify_data=' + JSON.stringify( { postType: postType.value, catID: cat.value } )
+		data: '&talash_data=' + JSON.stringify( { postType: postType.value, catID: cat.value } )
 	}
 	const args = bodyParams.action + bodyParams.nonce + bodyParams.data
 

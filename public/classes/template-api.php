@@ -4,7 +4,7 @@
  *
  * @link       https://abmsourav.com/
  *
- * @package    searchify
+ * @package    talash
  * @author     sourav926 
  */
 namespace Talash\View;
@@ -12,7 +12,7 @@ namespace Talash\View;
 use Talash\Admin\Author_Query;
 use Talash\Admin\Category_Query;
 use Talash\Admin\PostType_Query;
-use Talash\Admin\Searchify_Query;
+use Talash\Admin\Talash_Query;
 
 
 class Template_Api {
@@ -36,17 +36,17 @@ class Template_Api {
         if ( false == $security ) {
             return;
         }
-		$searchify_data = json_decode( sanitize_text_field( stripslashes( $_POST['searchify_data'] ) ) );
+		$search_data = json_decode( sanitize_text_field( stripslashes( $_POST['talash_data'] ) ) );
 		$data = null;
 
-		if ( $searchify_data->catID !== '' && $searchify_data->authorID === '' ) {
-			$data = PostType_Query::searchify_get_postTypes_by_cat($searchify_data);
-		} elseif ( $searchify_data->catID === '' && $searchify_data->authorID !== '' ) {
-			$data = PostType_Query::searchify_get_postTypes_by_author($searchify_data);
-		} elseif ( $searchify_data->catID !== '' && $searchify_data->authorID !== '' ) {
-			$data = PostType_Query::searchify_get_postTypes_by_cat_author($searchify_data);
+		if ( $search_data->catID !== '' && $search_data->authorID === '' ) {
+			$data = PostType_Query::get_postTypes_by_cat($search_data);
+		} elseif ( $search_data->catID === '' && $search_data->authorID !== '' ) {
+			$data = PostType_Query::get_postTypes_by_author($search_data);
+		} elseif ( $search_data->catID !== '' && $search_data->authorID !== '' ) {
+			$data = PostType_Query::get_postTypes_by_cat_author($search_data);
 		} else {
-			$data = PostType_Query::searchify_get_postTypes();
+			$data = PostType_Query::talash_get_postTypes();
 		}
 
 		if ( $data === 'error' ) {
@@ -62,17 +62,17 @@ class Template_Api {
         if ( false == $security ) {
             return;
         }
-		$searchify_data = json_decode( sanitize_text_field( stripslashes( $_POST['searchify_data'] ) ) );
+		$search_data = json_decode( sanitize_text_field( stripslashes( $_POST['talash_data'] ) ) );
 		$data = null;
 
-		if ( $searchify_data->postType !== '' && $searchify_data->authorID === '' ) {
-			$data = Category_Query::searchify_get_cats_by_postTypes($searchify_data);
-		} elseif ( $searchify_data->postType === '' && $searchify_data->authorID !== '' ) {
-			$data = Category_Query::searchify_get_cats_by_author($searchify_data);
-		} elseif ( $searchify_data->postType !== '' && $searchify_data->authorID !== '' ) {
-			$data = Category_Query::searchify_get_cats_by_postType_author($searchify_data);
+		if ( $search_data->postType !== '' && $search_data->authorID === '' ) {
+			$data = Category_Query::get_cats_by_postTypes($search_data);
+		} elseif ( $search_data->postType === '' && $search_data->authorID !== '' ) {
+			$data = Category_Query::get_cats_by_author($search_data);
+		} elseif ( $search_data->postType !== '' && $search_data->authorID !== '' ) {
+			$data = Category_Query::get_cats_by_postType_author($search_data);
 		} else {
-			$data = Category_Query::searchify_get_all_cats();
+			$data = Category_Query::talash_get_all_cats();
 		}
 
 		if ( $data === 'error' ) {
@@ -91,18 +91,16 @@ class Template_Api {
         }
 
 		$authors = null;
-		$searchify_data = json_decode( sanitize_text_field( stripslashes( $_POST['searchify_data'] ) ) );
+		$search_data = json_decode( sanitize_text_field( stripslashes( $_POST['talash_data'] ) ) );
 		
-		if ( empty( $searchify_data->postType ) && empty( $searchify_data->catID ) ) {
-			$authors = Author_Query::searchify_get_all_author();
-
-		} elseif ( ! empty( $searchify_data->postType ) && ! empty( $searchify_data->catID ) ) {
-			$authors = Author_Query::searchify_get_author_by_pt_cat($searchify_data);
-
-		} elseif ( empty( $searchify_data->postType ) && ! empty( $searchify_data->catID ) ) {
-			$authors = Author_Query::searchify_get_author_by_cat($searchify_data->catID);
-		} elseif ( ! empty( $searchify_data->postType ) && empty( $searchify_data->catID ) ) {
-			$authors = Author_Query::searchify_get_author_by_pt($searchify_data->postType);
+		if ( empty( $search_data->postType ) && empty( $search_data->catID ) ) {
+			$authors = Author_Query::talash_get_all_author();
+		} elseif ( ! empty( $search_data->postType ) && ! empty( $search_data->catID ) ) {
+			$authors = Author_Query::get_author_by_pt_cat($search_data);
+		} elseif ( empty( $search_data->postType ) && ! empty( $search_data->catID ) ) {
+			$authors = Author_Query::get_author_by_cat($search_data->catID);
+		} elseif ( ! empty( $search_data->postType ) && empty( $search_data->catID ) ) {
+			$authors = Author_Query::get_author_by_pt($search_data->postType);
 		}
 
 		if ( $authors ) {
@@ -174,9 +172,9 @@ class Template_Api {
         if ( false == $security ) {
             return;
         }
-		$searchify_data = json_decode( sanitize_text_field( stripslashes( $_POST['searchify_data'] ) ) );
+		$search_data = json_decode( sanitize_text_field( stripslashes( $_POST['talash_data'] ) ) );
 		
-		$data = Searchify_Query::searchify_search_query($searchify_data);
+		$data = Talash_Query::talash_search_query($search_data);
 
 		// wp_send_json($data, 200);
 		self::search_result_markup($data);

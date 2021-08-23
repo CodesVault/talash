@@ -12,7 +12,7 @@ namespace Talash\Admin;
 
 class PostType_Query {
 
-	private static function searchify_query($query, $arr) {
+	private static function talash_query($query, $arr) {
 		global $wpdb;
 	
 		$results = $wpdb->get_results( $wpdb->prepare( $query, $arr ) );
@@ -30,7 +30,7 @@ class PostType_Query {
 		return $post_types;
 	}
 
-	public static function searchify_get_postTypes() {
+	public static function talash_get_postTypes() {
 		$data = [];
 
 		$post_types = self::allowed_postTypes();
@@ -42,11 +42,11 @@ class PostType_Query {
 		return $data;
 	}
 
-	public static function searchify_get_postTypes_by_cat($searchify_data) {
+	public static function get_postTypes_by_cat($searchify_data) {
 		global $wpdb;
 		$data = [];
 		
-		$postTypes = self::searchify_query(
+		$postTypes = self::talash_query(
 			"SELECT DISTINCT posts.post_type
 			FROM {$wpdb->prefix}posts posts
 			INNER JOIN {$wpdb->prefix}term_relationships term_rel
@@ -75,11 +75,11 @@ class PostType_Query {
 		return $data;
 	}
 
-	public static function searchify_get_postTypes_by_author($searchify_data) {
+	public static function get_postTypes_by_author($searchify_data) {
 		global $wpdb;
 		$data = [];
 		
-		$postTypes = self::searchify_query(
+		$postTypes = self::talash_query(
 			"SELECT DISTINCT posts.post_type
 			FROM {$wpdb->prefix}posts posts
 			WHERE posts.post_author = %s
@@ -101,11 +101,11 @@ class PostType_Query {
 		return $data;
 	}
 
-	public static function searchify_get_postTypes_by_cat_author($searchify_data) {
+	public static function get_postTypes_by_cat_author($searchify_data) {
 		global $wpdb;
 		$data = [];
 
-		$postTypes = self::searchify_query(
+		$postTypes = self::talash_query(
 			"SELECT DISTINCT posts.post_type
 			FROM {$wpdb->prefix}posts posts
 			INNER JOIN {$wpdb->prefix}term_relationships term_rel

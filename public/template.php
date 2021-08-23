@@ -1,5 +1,3 @@
-<?php use Searchify\View\Template_Api; ?>
-
 <div class="searchify" id="searchify">
 	<a id="searchify-select" href="#searchify"></a>
 	<div class="searchify-overlay"></div>

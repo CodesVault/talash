@@ -12,17 +12,17 @@ namespace Talash\Admin;
 
 class Category_Query {
 
-	private static function searchify_query($query, $arr) {
+	private static function talash_query($query, $arr) {
 		global $wpdb;
 	
 		$results = $wpdb->get_results( $wpdb->prepare( $query, $arr ) );
 		return $results;
 	}
 
-	public static function searchify_get_all_cats() {
+	public static function talash_get_all_cats() {
 		global $wpdb;
 
-		$cats = self::searchify_query(
+		$cats = self::talash_query(
 			"SELECT DISTINCT terms.term_id, terms.name
 			FROM {$wpdb->prefix}posts posts
 			INNER JOIN {$wpdb->prefix}term_relationships term_rel
@@ -40,12 +40,12 @@ class Category_Query {
 		return $cats;
 	}
 
-	public static function searchify_get_cats_by_postTypes($searchify_data) {
+	public static function get_cats_by_postTypes($searchify_data) {
 		global $wpdb;
 		$post_types = explode(', ', $searchify_data->postType);
 		$post_types = "'" . implode("','", $post_types) . "'";
 		
-		$cats = self::searchify_query(
+		$cats = self::talash_query(
 			"SELECT DISTINCT terms.term_id, terms.name
 			FROM {$wpdb->prefix}posts posts
 			INNER JOIN {$wpdb->prefix}term_relationships term_rel
@@ -67,11 +67,11 @@ class Category_Query {
 		return $cats;
 	}
 
-	public static function searchify_get_cats_by_author($searchify_data) {
+	public static function get_cats_by_author($searchify_data) {
 		global $wpdb;
 		$author_id = $searchify_data->authorID;
 
-		$cats = self::searchify_query(
+		$cats = self::talash_query(
 			"SELECT DISTINCT terms.term_id, terms.name
 			FROM {$wpdb->prefix}posts posts
 			INNER JOIN {$wpdb->prefix}term_relationships term_rel
@@ -93,13 +93,13 @@ class Category_Query {
 		return $cats;
 	}
 
-	public static function searchify_get_cats_by_postType_author($searchify_data) {
+	public static function get_cats_by_postType_author($searchify_data) {
 		global $wpdb;
 		$post_types = explode(', ', $searchify_data->postType);
 		$post_types = "'" . implode("','", $post_types) . "'";
 		$author_id = $searchify_data->authorID;
 
-		$cats = self::searchify_query(
+		$cats = self::talash_query(
 			"SELECT DISTINCT terms.term_id, terms.name
 			FROM {$wpdb->prefix}posts posts
 			INNER JOIN {$wpdb->prefix}term_relationships term_rel

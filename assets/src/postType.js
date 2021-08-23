@@ -59,7 +59,7 @@ function changePostType() {
 	const bodyParams = {
 		action: 'action=talash_get_post_types',
 		nonce: '&security=' + talashPublicApi.nonce,
-		data: '&searchify_data=' + JSON.stringify( {'catID': catData.value, 'authorID': authorData.value} )
+		data: '&talash_data=' + JSON.stringify( {'catID': catData.value, 'authorID': authorData.value} )
 	}
 	const args = bodyParams.action + bodyParams.nonce + bodyParams.data
 

@@ -4,7 +4,7 @@
  *
  * @link       https://abmsourav.com/
  *
- * @package    searchify
+ * @package    talash
  * @author     sourav926 
  */
 namespace Talash\Admin;
