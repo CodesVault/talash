@@ -12,7 +12,7 @@ namespace Talash;
 use Talash\View\Talash_Public;
 use Talash\Admin\Talash_Admin;
 
-class Talash_Class {
+class Talash_Core {
 
 	public static $instance;
 

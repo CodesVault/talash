@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Talash
  * Plugin URI:        https://wordpress.org/plugins/talash
- * Description:       Advanced Search plugin for WordPress. <code>[talash-search]</code> use this shorCode to show the <strong>Searchify Search Bar</strong>. You can customize the UI from customizer.
+ * Description:       Advanced Search plugin for WordPress. <code>[talash-search]</code> use this shorCode to show the <strong>Talash Search Bar</strong>. You can customize the UI from customizer.
  * Version:           0.0.7
  * Author:            Keramot Ul Islam 
  * Author URI:        https://abmsourav.com/
@@ -11,7 +11,7 @@
  * Text Domain:       talash
  * Domain Path:       /languages
  */
-use Talash\Talash_Class;
+use Talash\Talash_Core;
 
 if ( ! defined( 'ABSPATH' ) ) die;
 
@@ -21,6 +21,6 @@ define( 'TALASH_DIR_PATH', plugin_dir_path( __FILE__ ) );
 define( 'TALASH_ENV_DEV', false );
 
 
-require TALASH_DIR_PATH . '/inc/Searchify.php';
+require TALASH_DIR_PATH . '/inc/Talash.php';
 
-Talash_Class::spread_happiness();
+Talash_Core::spread_happiness();
