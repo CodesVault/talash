@@ -3,17 +3,17 @@ function advancedOption() {
 	const searchBar = document.querySelector('.search-bar')
 	const searchInput = document.querySelector('.search-bar__input')
 	const searchInner = document.querySelector('.search-bar__inner')
-	const advancedOptions = document.querySelector('.searchify-advanced')
-	const searchifyOverlay = document.querySelector('.searchify-overlay')
+	const advancedOptions = document.querySelector('.talash-advanced')
+	const talashOverlay = document.querySelector('.talash-overlay')
 
 	searchInput.onfocus = function() {
 		if (document.activeElement === searchInput) {
-			searchInner.removeAttribute('searchify-tooltip')
+			searchInner.removeAttribute('talash-tooltip')
 		}
 
 		searchBar.classList.add('unfold')
 		advancedOptions.classList.add('show')
-		searchifyOverlay.classList.add('show')
+		talashOverlay.classList.add('show')
 	}
 }
 

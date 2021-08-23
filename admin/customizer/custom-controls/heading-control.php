@@ -1,12 +1,12 @@
 <?php
 
-class Searchify_Heading_Control extends WP_Customize_Control {
+class Talash_Heading_Control extends WP_Customize_Control {
 	public $type = 'separator';
 
 	public function render_content() {
 		?>
-		<label <?php $this->input_attrs(); ?>>
-			<h4 class="searchify-customize-control-separator">
+		<label class="talash-heading">
+			<h4 class="talash-customize-control-separator">
 				<?php echo esc_html( $this->label ); ?>
 			</h4>
 			<?php if ( ! empty( $this->description ) ) : ?>

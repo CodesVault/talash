@@ -4,14 +4,14 @@ function input_field($wp_customize) {
 	$wp_customize->add_setting( 'searchify_input_heading', array(
 		'sanitize_callback' => 'esc_html',
 	) );	
-	$wp_customize->add_control( new Searchify_Heading_Control( $wp_customize, 'searchify_input_heading', 
+	$wp_customize->add_control( new Talash_Heading_Control( $wp_customize, 'searchify_input_heading', 
 		array(
-			'label'	            => __( 'Input', 'searchify' ),
+			'label'	            => __( 'Input', 'talash' ),
 			'settings'	        => 'searchify_input_heading',
-			'section'  	        => 'searchify_section',
+			'section'  	        => 'talash_section',
 			'priority'          => 2,
 			'input_attrs' => array(
-				'class' => 'searchify-heading',
+				'class' => 'talash-heading',
 			),
 		)
 	) );
@@ -24,8 +24,8 @@ function input_field($wp_customize) {
 	) );
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'searchify_input_background_color', 
 		array(
-			'label'      => __( 'Input background Color', 'searchify' ),
-			'section'    => 'searchify_section',
+			'label'      => __( 'Input background Color', 'talash' ),
+			'section'    => 'talash_section',
 			'settings'   => 'searchify_input_background_color',
 			'priority'   => 2
 		) 
@@ -39,8 +39,8 @@ function input_field($wp_customize) {
 	) );
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'searchify_dropdown_input_background_color', 
 		array(
-			'label'      => __( 'Dropdown Input background Color', 'searchify' ),
-			'section'    => 'searchify_section',
+			'label'      => __( 'Dropdown Input background Color', 'talash' ),
+			'section'    => 'talash_section',
 			'settings'   => 'searchify_dropdown_input_background_color',
 			'priority'   => 2
 		) 
@@ -54,8 +54,8 @@ function input_field($wp_customize) {
 	) );
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'searchify_input_color', 
 		array(
-			'label'      => __( 'Input Color', 'searchify' ),
-			'section'    => 'searchify_section',
+			'label'      => __( 'Input Color', 'talash' ),
+			'section'    => 'talash_section',
 			'settings'   => 'searchify_input_color',
 			'priority'   => 2
 		) 

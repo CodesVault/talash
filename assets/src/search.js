@@ -1,12 +1,12 @@
 const {fetchData} = require("./fetchData")
 
 function closeSearchPopup() {
-	const searchClose = document.querySelector('.searchify-result-close')
+	const searchClose = document.querySelector('.talash-result-close')
 	const searchInput = document.querySelector('.search-bar__input')
-	const searchResult = document.querySelector('.searchify-result')
-	const searchInner = document.querySelector('.searchify-result__inner')
-	const innerPopup = document.querySelectorAll('.searchify-inner-popup')
-	const innerPopupInput = document.querySelectorAll('.searchify-popup__input')
+	const searchResult = document.querySelector('.talash-result')
+	const searchInner = document.querySelector('.talash-result__inner')
+	const innerPopup = document.querySelectorAll('.talash-inner-popup')
+	const innerPopupInput = document.querySelectorAll('.talash-popup__input')
 
 	searchClose.addEventListener('click', function() {
 		innerPopup.forEach(function(val, key) {
@@ -38,7 +38,7 @@ function validation() {
 }
 
 function searchByLog(data) {
-	const searchBy = document.querySelector('.searchify-search-by')
+	const searchBy = document.querySelector('.talash-search-by')
 	const searchInput = document.querySelector('.search-bar__input')
 	const postTypeLabel = document.querySelector('.postType-label')
 	const catLabel = document.querySelector('.cat-label')
@@ -55,15 +55,15 @@ function searchByLog(data) {
 
 	searchByData += data.catID && data.authorID ? '; ' : ''
 	searchByData +=  data.authorID ? authorLabel.getAttribute('data-label') + ': ' + authorLabel.textContent : ''
-	searchBy.setAttribute('searchify-tooltip', searchByData)
+	searchBy.setAttribute('talash-tooltip', searchByData)
 }
 
 function search() {
 	const searchInput = document.querySelector('.search-bar__input')
-	const searchSubmit = document.querySelector('#searchify-form')
-	const searchResult = document.querySelector('.searchify-result')
-	const searchInner = document.querySelector('.searchify-result__inner')
-	const searchifyOverlay = document.querySelector('.searchify-overlay')
+	const searchSubmit = document.querySelector('#talash-form')
+	const searchResult = document.querySelector('.talash-result')
+	const searchInner = document.querySelector('.talash-result__inner')
+	const talashOverlay = document.querySelector('.talash-overlay')
 	const loader = document.querySelector('#search-loader')
 
 	function searchCallback(e) {
@@ -80,7 +80,7 @@ function search() {
 		}
 
 		searchResult.classList.add('show')
-		searchifyOverlay.classList.add('show')
+		talashOverlay.classList.add('show')
 		loader.classList.add('show')
 
 		const data = {}

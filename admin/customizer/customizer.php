@@ -13,7 +13,7 @@ class Talash_Customize {
 
 	function __construct() {
 		add_action( 'customize_register', [ $this, 'customizer_settings' ] );
-		require_once( $this->customizer_dir . 'styles.php' );
+		require_once( $this->customizer_dir . 'style.php' );
 	}
 
 	/**
@@ -33,10 +33,10 @@ class Talash_Customize {
 
 		require_once( $this->customizer_dir . 'custom-controls/heading-control.php' );
 
-		require_once( $this->customizer_dir . 'controls/searchify-controls.php' );
+		require_once( $this->customizer_dir . 'controls/talash-controls.php' );
 
-		$wp_customize->add_section( 'searchify_section' , array(
-			'title'      => __( 'Searchify', 'searchify' ),
+		$wp_customize->add_section( 'talash_section' , array(
+			'title'      => __( 'Talash', 'talash' ),
 			'priority'   => 25
 		) );	
 		searchify_customizer_controls($wp_customize);

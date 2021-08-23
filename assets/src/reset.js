@@ -1,7 +1,7 @@
 const { resetState } = require("./state")
 
 function reset(optionReset = false, postTypeReset = true, catReset = true, authorReset = true) {
-	const reset = document.querySelector('.searchify-reset')
+	const reset = document.querySelector('.talash-reset')
 	const postTypeData = document.querySelector('#postType-data')
 	const postTypeLabel = document.querySelector('.postType-label')
 	const postTypeInput = document.querySelector('#postType-popup__input')

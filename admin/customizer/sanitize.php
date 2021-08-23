@@ -3,21 +3,21 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 
-if ( ! function_exists( 'searchify_sanitize_integer' ) ) {
-	function searchify_sanitize_integer( $input ) {
+if ( ! function_exists( 'talash_sanitize_integer' ) ) {
+	function talash_sanitize_integer( $input ) {
 		return absint( $input );
 	}
 }
 
-if ( ! function_exists( 'searchify_sanitize_float' ) ) {
-	function searchify_sanitize_float( $input ) {
+if ( ! function_exists( 'talash_sanitize_float' ) ) {
+	function talash_sanitize_float( $input ) {
 		return filter_var( $input, FILTER_SANITIZE_NUMBER_FLOAT, FILTER_FLAG_ALLOW_FRACTION );
 	}
 }
 
 
-if ( ! function_exists( 'searchify_sanitize_choices' ) ) {
-	function searchify_sanitize_choices( $input, $setting ) {
+if ( ! function_exists( 'talash_sanitize_choices' ) ) {
+	function talash_sanitize_choices( $input, $setting ) {
 
 		// Ensure input is a slug
 		$input = sanitize_key( $input );
@@ -32,8 +32,8 @@ if ( ! function_exists( 'searchify_sanitize_choices' ) ) {
 	}
 }
 
-if ( ! function_exists( 'searchify_sanitize_checkbox' ) ) {
-	function searchify_sanitize_checkbox( $input ) {
+if ( ! function_exists( 'talash_sanitize_checkbox' ) ) {
+	function talash_sanitize_checkbox( $input ) {
 		if ( $input ) {
 			$output = '1';
 		} else {
@@ -43,8 +43,8 @@ if ( ! function_exists( 'searchify_sanitize_checkbox' ) ) {
 	}
 }
 
-if ( ! function_exists( 'searchify_sanitize_rgba' ) ) {
-	function searchify_sanitize_rgba( $color ) {
+if ( ! function_exists( 'talash_sanitize_rgba' ) ) {
+	function talash_sanitize_rgba( $color ) {
 		if ( empty( $color ) || is_array( $color ) )
 			return 'rgba(0,0,0,0)';
 
@@ -61,8 +61,8 @@ if ( ! function_exists( 'searchify_sanitize_rgba' ) ) {
 	}
 }
 
-if ( ! function_exists( 'searchify_sanitize_select' ) ) {
-	function searchify_sanitize_select( $input, $setting ){
+if ( ! function_exists( 'talash_sanitize_select' ) ) {
+	function talash_sanitize_select( $input, $setting ){
 			
 		//input must be a slug: lowercase alphanumeric characters, dashes and underscores are allowed only
 		$input = sanitize_key($input);

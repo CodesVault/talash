@@ -22,7 +22,7 @@ function selectCat() {
 
 					labels += labels ? ', ' + catLi[index].textContent : catLi[index].textContent
 					catLabel.textContent = labels
-					catLabel.setAttribute('searchify-tooltip', labels)
+					catLabel.setAttribute('talash-tooltip', labels)
 				} else {
 					if (catData.value) reset(true, true, false)
 					
@@ -35,7 +35,7 @@ function selectCat() {
 
 					catLabel.textContent = catLi[index].textContent
 					catData.value = catLi[index].getAttribute('data-catID')
-					catLabel.removeAttribute('searchify-tooltip')
+					catLabel.removeAttribute('talash-tooltip')
 
 					setTimeout(function() {
 						catPopup.classList.remove('show')

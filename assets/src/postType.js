@@ -22,7 +22,7 @@ function selectPostType() {
 
 					labels += labels ? ', ' + postTypeListli[index].textContent : postTypeListli[index].textContent
 					postTypeLabel.textContent = labels
-					postTypeLabel.setAttribute('searchify-tooltip', labels)
+					postTypeLabel.setAttribute('talash-tooltip', labels)
 				} else {
 					if (postTypeData.value) reset(true, false)
 
@@ -35,7 +35,7 @@ function selectPostType() {
 
 					postTypeLabel.textContent = postTypeListli[index].textContent
 					postTypeData.value = postTypeListli[index].getAttribute('data-postType')
-					postTypeLabel.removeAttribute('searchify-tooltip')
+					postTypeLabel.removeAttribute('talash-tooltip')
 
 					setTimeout(function() {
 						postTypePopup.classList.remove('show')

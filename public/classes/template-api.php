@@ -113,8 +113,8 @@ class Template_Api {
 
 	public static function not_found() {
 		?>
-			<div class="searchify-notFound-card">
-				<h2 class="searchify-title"><?php _e( 'Nothing Found', 'searchify' ); ?></h2>
+			<div class="talash-notFound-card">
+				<h2 class="talash-title"><?php _e( 'Nothing Found', 'talash' ); ?></h2>
 			</div>
 		<?php
 	}
@@ -133,26 +133,26 @@ class Template_Api {
 				$post_title = implode( ' ', $title_shorten ) . '...';
 			}
 			?>
-			<div class="searchify-card">
+			<div class="talash-card">
 				<?php
 				if ( has_post_thumbnail( $post->ID ) ) {
 					$thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'thumbnail' );
 					$thumbnail_image_url = $thumbnail[0];
 				} else {
-					$thumbnail_image_url = TALASH_URL . 'assets/images/searchify-placeholder.png';
+					$thumbnail_image_url = TALASH_URL . 'assets/images/talash-placeholder.png';
 				}
 				?>
-				<div class="searchify-thumbnail-wrap">
-					<img class="searchify-thumbnail" src="<?php echo esc_url( $thumbnail_image_url ); ?>" alt="<?php echo esc_attr( $post->post_title ); ?>">
+				<div class="talash-thumbnail-wrap">
+					<img class="talash-thumbnail" src="<?php echo esc_url( $thumbnail_image_url ); ?>" alt="<?php echo esc_attr( $post->post_title ); ?>">
 				</div>
-				<div class="searchify-card__inner">
-					<h2 class="searchify-title">
+				<div class="talash-card__inner">
+					<h2 class="talash-title">
 						<a href="<?php echo get_the_permalink( $post->ID ); ?>">
 							<?php echo esc_html( $post_title ); ?>
 						</a>
 					</h2>
 
-					<div class="searchify-post-meta">
+					<div class="talash-post-meta">
 						<?php if ( isset( $post->cat_name ) ) : ?>
 							<div class="cat-meta"><?php echo esc_html( $post->cat_name ); ?></div>
 						<?php endif; ?>

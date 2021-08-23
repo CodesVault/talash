@@ -1,8 +1,8 @@
 <?php 
 
-function searchify_customizer_editor_styles() { ?>
+function talash_customizer_editor_styles() { ?>
 	<style type="text/css">
-		.searchify-heading h4 {
+		.talash-heading h4 {
 			font-size: 20px;
 			font-weight: 500;
 			margin-top: 35px;
@@ -14,10 +14,10 @@ function searchify_customizer_editor_styles() { ?>
 	</style>
 	<?php 
 }
-add_action( 'customize_controls_print_styles', 'searchify_customizer_editor_styles', 999 );
+add_action( 'customize_controls_print_styles', 'talash_customizer_editor_styles', 999 );
 
 
-function searchify_customizer_style() {
+function talash_customizer_style() {
 	?>
 	<style type="text/css">
 		/* === input field === */
@@ -48,21 +48,21 @@ function searchify_customizer_style() {
 			stroke: <?php echo get_theme_mod( 'searchify_dropdown_button_icon_color', '' ); ?>;
 		}
 
-		.searchify form .search-bar button.search-bar__btn-search {
+		.searctalashhify form .search-bar button.search-bar__btn-search {
 			background-color: <?php echo get_theme_mod( 'searchify_button_background_color', '' ); ?>;
 		}
-		.searchify form .search-bar.unfold button.search-bar__btn-search {
+		.talash form .search-bar.unfold button.search-bar__btn-search {
 			background-color: <?php echo get_theme_mod( 'searchify_dropdown_button_background_color', '' ); ?>;
 		}
-		.searchify form .search-bar.unfold button.search-bar__btn-search:hover,
-		.searchify form .search-bar button.search-bar__btn-search:hover {
+		.talash form .search-bar.unfold button.search-bar__btn-search:hover,
+		.talash form .search-bar button.search-bar__btn-search:hover {
 			background-color: <?php echo get_theme_mod( 'searchify_button_hover_background_color', '' ); ?>;
 		}
 
 		/* === popup === */
-		.searchify-advanced,
-		.searchify-inner-popup.show,
-		.searchify-result.show {
+		.talash-advanced,
+		.talash-inner-popup.show,
+		.talash-result.show {
 			background-color: <?php echo get_theme_mod( 'searchify_dropdown_background_color', '' ); ?>;
 		}
 
@@ -76,47 +76,47 @@ function searchify_customizer_style() {
 			color: <?php echo get_theme_mod( 'searchify_dropdown_color', '' ); ?>;
 		}
 
-		a.searchify-reset,
-		.searchify-result-close a,
-		.searchify-popup__input-close a,
-		a.searchify-reset:hover,
-		.searchify-result-close a:hover,
-		.searchify-popup__input-close a:hover {
+		a.talash-reset,
+		.talash-result-close a,
+		.talash-popup__input-close a,
+		a.talash-reset:hover,
+		.talash-result-close a:hover,
+		.talash-popup__input-close a:hover {
 			color: <?php echo get_theme_mod( 'searchify_dropdown_reset_color', '' ); ?>;
 		}
-		a.searchify-reset:hover,
-		.searchify-result-close a:hover,
-		.searchify-popup__input-close a:hover {
+		a.talash-reset:hover,
+		.talash-result-close a:hover,
+		.talash-popup__input-close a:hover {
 			opacity: .8;
 		}
 
-		.searchify-loader div {
+		.talash-loader div {
 			border-color: <?php echo get_theme_mod( 'searchify_dropdown_progress_bar_color', '' ); ?>;
 		}
 
 		/* === search result === */
-		.searchify-search-by {
+		.talash-search-by {
 			color: <?php echo get_theme_mod( 'searchify_result_search_by_color', '' ); ?>;
 		}
 
-		h2.searchify-title a {
+		h2.talash-title a {
 			color: <?php echo get_theme_mod( 'searchify_result_title_color', '' ); ?>;
 		}
-		h2.searchify-title a:hover {
+		h2.talash-title a:hover {
 			color: <?php echo get_theme_mod( 'searchify_result_title_hover_color', '' ); ?>;
 		}
 
-		.searchify-post-meta .author-meta {
+		.talash-post-meta .author-meta {
 			color: <?php echo get_theme_mod( 'searchify_result_author_color', '' ); ?>;
 		}
 
-		.searchify-post-meta .cat-meta {
+		.talash-post-meta .cat-meta {
 			background-color: <?php echo get_theme_mod( 'searchify_result_cat_bg_color', '' ); ?>;
 		}
-		.searchify-post-meta .cat-meta {
+		.talash-post-meta .cat-meta {
 			color: <?php echo get_theme_mod( 'searchify_result_cat_color', '' ); ?>;
 		}
 	</style>
 	<?php 
 }
-add_action( 'wp_head', 'searchify_customizer_style' );
+add_action( 'wp_head', 'talash_customizer_style' );

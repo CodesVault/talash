@@ -4,7 +4,7 @@
  *
  * @link       https://abmsourav.com/
  *
- * @package    searchify
+ * @package    talash
  * @author     sourav926 
  */
 namespace Talash\Admin;
@@ -42,7 +42,7 @@ class PostType_Query {
 		return $data;
 	}
 
-	public static function get_postTypes_by_cat($searchify_data) {
+	public static function get_postTypes_by_cat($search_data) {
 		global $wpdb;
 		$data = [];
 		
@@ -53,17 +53,12 @@ class PostType_Query {
 				ON posts.ID = term_rel.object_id
 			WHERE term_rel.term_taxonomy_id = %s
 				AND	posts.post_status = %s",
-			[ $searchify_data->catID, 'publish' ]
+			[ $search_data->catID, 'publish' ]
 		);
 		if ( is_wp_error( $postTypes ) ) {
 			return 'error';
 		}
-		
-		$args = [
-			'public' => true,
-			'exclude_from_search' => false,
-			'publicly_queryable' => true
-		];
+	
 		$all_post_types = self::allowed_postTypes('objects');
 
 		for ($i = 0; $i < count($all_post_types); $i++) {
@@ -75,7 +70,7 @@ class PostType_Query {
 		return $data;
 	}
 
-	public static function get_postTypes_by_author($searchify_data) {
+	public static function get_postTypes_by_author($search_data) {
 		global $wpdb;
 		$data = [];
 		
@@ -84,7 +79,7 @@ class PostType_Query {
 			FROM {$wpdb->prefix}posts posts
 			WHERE posts.post_author = %s
 				AND	posts.post_status = %s",
-			[ $searchify_data->authorID, 'publish' ]
+			[ $search_data->authorID, 'publish' ]
 		);
 		if ( is_wp_error( $postTypes ) ) {
 			return 'error';
@@ -101,7 +96,7 @@ class PostType_Query {
 		return $data;
 	}
 
-	public static function get_postTypes_by_cat_author($searchify_data) {
+	public static function get_postTypes_by_cat_author($search_data) {
 		global $wpdb;
 		$data = [];
 
@@ -113,7 +108,7 @@ class PostType_Query {
 			WHERE posts.post_author = %s
 				AND term_rel.term_taxonomy_id = %s
 				AND	posts.post_status = %s",
-			[ $searchify_data->authorID, $searchify_data->catID, 'publish' ]
+			[ $search_data->authorID, $search_data->catID, 'publish' ]
 		);
 		if ( is_wp_error( $postTypes ) ) {
 			return 'error';

@@ -71,11 +71,11 @@ class Author_Query {
 		return $data;
 	}
 
-	public static function get_author_by_pt_cat($searchify_data) {
+	public static function get_author_by_pt_cat($search_data) {
 		global $wpdb;
 		$data = [];
 
-		$post_types = explode(', ', $searchify_data->postType);
+		$post_types = explode(', ', $search_data->postType);
 		$post_types = "'" . implode("','", $post_types) . "'";
 
 		$data = self::talash_query(
@@ -86,7 +86,7 @@ class Author_Query {
 			INNER JOIN {$wpdb->prefix}term_relationships term_rel
 				ON posts.ID = term_rel.object_id
 			WHERE posts.post_type IN ($post_types)
-				AND term_rel.term_taxonomy_id IN ($searchify_data->catID)
+				AND term_rel.term_taxonomy_id IN ($search_data->catID)
 				AND posts.post_status = %s",
 			[ 'publish' ]
 		);

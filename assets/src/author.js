@@ -23,7 +23,7 @@ function selectAuthor() {
 
 					labels += labels ? ', ' + authorLi[index].textContent : authorLi[index].textContent
 					authorLabel.textContent = labels
-					authorLabel.setAttribute('searchify-tooltip', labels)
+					authorLabel.setAttribute('talash-tooltip', labels)
 				} else {
 					if (authorData.value) reset(true, true, true, false)
 
@@ -36,7 +36,7 @@ function selectAuthor() {
 
 					authorLabel.textContent = authorLi[index].childNodes[2].textContent
 					authorData.value = authorLi[index].getAttribute('data-authorID')
-					authorLabel.removeAttribute('searchify-tooltip')
+					authorLabel.removeAttribute('talash-tooltip')
 
 					setTimeout(function() {
 						authorPopupInput.classList.remove('show')

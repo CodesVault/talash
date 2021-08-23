@@ -1,15 +1,15 @@
 
 function removePopup() {
 	const searchBar = document.querySelector('.search-bar');
-	const searchResult = document.querySelector('.searchify-result');
-	const advancedOptions = document.querySelector('.searchify-advanced');
+	const searchResult = document.querySelector('.talash-result');
+	const advancedOptions = document.querySelector('.talash-advanced');
 	const searchInner = document.querySelector('.search-bar__inner');
-	const innerPopup = document.querySelectorAll('.searchify-inner-popup');
-	const popupInput = document.querySelectorAll('.searchify-popup__input');
-	const searchifyOverlay = document.querySelector('.searchify-overlay');
+	const innerPopup = document.querySelectorAll('.talash-inner-popup');
+	const popupInput = document.querySelectorAll('.talash-popup__input');
+	const talashOverlay = document.querySelector('.talash-overlay');
 	
-	searchifyOverlay.addEventListener('click', function() {
-		searchifyOverlay.classList.remove('show')
+	talashOverlay.addEventListener('click', function() {
+		talashOverlay.classList.remove('show')
 		searchBar.classList.remove('unfold')
 
 		if (advancedOptions.classList.contains('show')) {
@@ -32,7 +32,7 @@ function removePopup() {
 			searchResult.classList.remove('show')
 		}
 
-		searchInner.setAttribute('searchify-tooltip', 'CTRL + SHIFT + F')
+		searchInner.setAttribute('talash-tooltip', 'CTRL + SHIFT + F')
 	});
 }
 

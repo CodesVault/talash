@@ -1,16 +1,16 @@
 function keyShortCut() {
-	const searchify = document.querySelector('#searchify')
+	const talash = document.querySelector('#talash')
 	const searchInput = document.querySelector('.search-bar__input')
-	const overlay = document.querySelector('.searchify-overlay')
+	const overlay = document.querySelector('.talash-overlay')
 
 	window.addEventListener('keydown', function(event) {
 		if ((event.ctrlKey || event.metaKey) && event.shiftKey && event.key === 'F') {
 			searchInput.focus();
 
-			searchify.scrollIntoView({
+			talash.scrollIntoView({
 				behavior: 'smooth'
 			});
-			window.scroll(100, searchify.offsetTop - 20);
+			window.scroll(100, talash.offsetTop - 20);
 		}
 
 		if (event.key === 'Escape') {

@@ -46,11 +46,11 @@ class Talash_Query {
 			'start_date' => $search_data->dateRangeStart,
 			'end_date' => $search_data->dateRangeEnd
 		];
-		$args = self::set_search_key($search_data->searchifySearch, $args);
+		$args = self::set_search_key($search_data->talashKey, $args);
 		$post_type = explode(', ', $search_data->postType);
 		$post_type = "'" . implode("','", $post_type) . "'";
 
-		if ( $search_data->searchifySearch ) {
+		if ( $search_data->talashKey ) {
 			$data = self::talash_query(
 				"SELECT DISTINCT posts.ID, posts.post_title, posts.post_author
 				FROM {$wpdb->prefix}posts posts
@@ -90,9 +90,9 @@ class Talash_Query {
 			$search_data->dateRangeStart,
 			$search_data->dateRangeEnd
 		];
-		$args = self::set_search_key($search_data->searchifySearch, $args);
+		$args = self::set_search_key($search_data->talashKey, $args);
 
-		if ( $search_data->searchifySearch ) {
+		if ( $search_data->talashKey ) {
 			$data = self::talash_query(
 				"SELECT DISTINCT posts.ID, posts.post_title, terms.name as cat_name
 				FROM {$wpdb->prefix}posts posts
@@ -140,9 +140,9 @@ class Talash_Query {
 			$search_data->dateRangeStart,
 			$search_data->dateRangeEnd
 		];
-		$args = self::set_search_key($search_data->searchifySearch, $args);
+		$args = self::set_search_key($search_data->talashKey, $args);
 
-		if ( $search_data->searchifySearch ) {
+		if ( $search_data->talashKey ) {
 			$data = self::talash_query(
 				"SELECT DISTINCT posts.ID, posts.post_title, posts.post_author
 				FROM {$wpdb->prefix}posts posts
@@ -226,11 +226,11 @@ class Talash_Query {
 			$search_data->dateRangeStart,
 			$search_data->dateRangeEnd
 		];
-		$args = self::set_search_key($search_data->searchifySearch, $args);
+		$args = self::set_search_key($search_data->talashKey, $args);
 		$post_type = explode(', ', $search_data->postType);
 		$post_type = "'" . implode("','", $post_type) . "'";
 
-		if ( $search_data->searchifySearch ) {
+		if ( $search_data->talashKey ) {
 			$data = self::talash_query(
 				"SELECT DISTINCT posts.ID, posts.post_title
 				FROM {$wpdb->prefix}posts posts
@@ -281,11 +281,11 @@ class Talash_Query {
 			$search_data->dateRangeStart,
 			$search_data->dateRangeEnd
 		];
-		$args = self::set_search_key($search_data->searchifySearch, $args);
+		$args = self::set_search_key($search_data->talashKey, $args);
 		$post_type = explode(', ', $search_data->postType);
 		$post_type = "'" . implode("','", $post_type) . "'";
 
-		if ( $search_data->searchifySearch ) {
+		if ( $search_data->talashKey ) {
 			$data = self::talash_query(
 				"SELECT DISTINCT posts.ID, posts.post_title, posts.post_author
 				FROM {$wpdb->prefix}posts posts
@@ -327,9 +327,9 @@ class Talash_Query {
 			$search_data->dateRangeStart,
 			$search_data->dateRangeEnd
 		];
-		$args = self::set_search_key($search_data->searchifySearch, $args);
+		$args = self::set_search_key($search_data->talashKey, $args);
 
-		if ( $search_data->searchifySearch ) {
+		if ( $search_data->talashKey ) {
 			$data = self::talash_query(
 				"SELECT DISTINCT posts.ID, posts.post_title, posts.post_author
 				FROM {$wpdb->prefix}posts posts
@@ -380,11 +380,11 @@ class Talash_Query {
 			$search_data->dateRangeStart,
 			$search_data->dateRangeEnd,
 		];
-		$args = self::set_search_key($search_data->searchifySearch, $args);
+		$args = self::set_search_key($search_data->talashKey, $args);
 		$post_type = explode(', ', $search_data->postType);
 		$post_type = "'" . implode("','", $post_type) . "'";
 
-		if ( $search_data->searchifySearch ) {
+		if ( $search_data->talashKey ) {
 			$data = self::talash_query(
 				"SELECT DISTINCT posts.ID, posts.post_title, posts.post_author
 				FROM {$wpdb->prefix}posts posts
@@ -436,7 +436,7 @@ class Talash_Query {
 			$search_data->dateRangeStart,
 			$search_data->dateRangeEnd,
 		];
-		$args = self::set_search_key($search_data->searchifySearch, $args);
+		$args = self::set_search_key($search_data->talashKey, $args);
 
 		$data = self::talash_query(
 			"SELECT posts.ID, posts.post_title
@@ -480,7 +480,7 @@ class Talash_Query {
 		} elseif ( $search_data->postType && $search_data->catID && $search_data->authorID ) {
 			// postTypes, categories, authors
 			$data = self::search_by_postType_cat_author($search_data);
-		} elseif ( $search_data->searchifySearch && $search_data->postType == '' && $search_data->catID == '' && $search_data->authorID == '' ) {
+		} elseif ( $search_data->talashKey && $search_data->postType == '' && $search_data->catID == '' && $search_data->authorID == '' ) {
 			// only keyword
 			$data = self::search_by_keyword($search_data);
 		}

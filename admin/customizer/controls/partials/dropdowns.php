@@ -4,14 +4,14 @@ function dropdowns($wp_customize) {
 	$wp_customize->add_setting( 'searchify_dropdown_heading', array(
 		'sanitize_callback' => 'esc_html',
 	) );	
-	$wp_customize->add_control( new Searchify_Heading_Control( $wp_customize, 'searchify_dropdown_heading', 
+	$wp_customize->add_control( new Talash_Heading_Control( $wp_customize, 'searchify_dropdown_heading', 
 		array(
-			'label'	            => __( 'Dropdowns', 'searchify' ),
+			'label'	            => __( 'Dropdowns', 'talash' ),
 			'settings'	        => 'searchify_dropdown_heading',
-			'section'  	        => 'searchify_section',
+			'section'  	        => 'talash_section',
 			'priority'          => 2,
 			'input_attrs' => array(
-				'class' => 'searchify-heading',
+				'class' => 'talash-heading',
 			),
 		)
 	) );
@@ -24,8 +24,8 @@ function dropdowns($wp_customize) {
 	) );
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'searchify_dropdown_background_color', 
 		array(
-			'label'      => __( 'Dropdown background Color', 'searchify' ),
-			'section'    => 'searchify_section',
+			'label'      => __( 'Dropdown background Color', 'talash' ),
+			'section'    => 'talash_section',
 			'settings'   => 'searchify_dropdown_background_color',
 			'priority'   => 2
 		) 
@@ -39,8 +39,8 @@ function dropdowns($wp_customize) {
 	) );
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'searchify_dropdown_color', 
 		array(
-			'label'      => __( 'Dropdown Color', 'searchify' ),
-			'section'    => 'searchify_section',
+			'label'      => __( 'Dropdown Color', 'talash' ),
+			'section'    => 'talash_section',
 			'settings'   => 'searchify_dropdown_color',
 			'priority'   => 2
 		) 
@@ -54,8 +54,8 @@ function dropdowns($wp_customize) {
 	) );
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'searchify_dropdown_reset_color', 
 		array(
-			'label'      => __( 'Dropdown Reset & Close button Color', 'searchify' ),
-			'section'    => 'searchify_section',
+			'label'      => __( 'Dropdown Reset & Close button Color', 'talash' ),
+			'section'    => 'talash_section',
 			'settings'   => 'searchify_dropdown_reset_color',
 			'priority'   => 2
 		) 
@@ -69,8 +69,8 @@ function dropdowns($wp_customize) {
 	) );
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'searchify_dropdown_progress_bar_color', 
 		array(
-			'label'      => __( 'Progress bar Color', 'searchify' ),
-			'section'    => 'searchify_section',
+			'label'      => __( 'Progress bar Color', 'talash' ),
+			'section'    => 'talash_section',
 			'settings'   => 'searchify_dropdown_progress_bar_color',
 			'priority'   => 2
 		) 

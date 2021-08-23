@@ -4,11 +4,11 @@ function search_result($wp_customize) {
 	$wp_customize->add_setting( 'searchify_result_heading', array(
 		'sanitize_callback' => 'esc_html',
 	) );	
-	$wp_customize->add_control( new Searchify_Heading_Control( $wp_customize, 'searchify_result_heading', 
+	$wp_customize->add_control( new Talash_Heading_Control( $wp_customize, 'searchify_result_heading', 
 		array(
-			'label'	            => __( 'Search Result', 'searchify' ),
+			'label'	            => __( 'Search Result', 'talash' ),
 			'settings'	        => 'searchify_result_heading',
-			'section'  	        => 'searchify_section',
+			'section'  	        => 'talash_section',
 			'priority'          => 2,
 			'input_attrs' => array(
 				'class' => 'searchify-heading',
@@ -24,8 +24,8 @@ function search_result($wp_customize) {
 	) );
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'searchify_result_search_by_color', 
 		array(
-			'label'      => __( 'Search by Color', 'searchify' ),
-			'section'    => 'searchify_section',
+			'label'      => __( 'Search by Color', 'talash' ),
+			'section'    => 'talash_section',
 			'settings'   => 'searchify_result_search_by_color',
 			'priority'   => 2
 		) 
@@ -39,8 +39,8 @@ function search_result($wp_customize) {
 	) );
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'searchify_result_title_color', 
 		array(
-			'label'      => __( 'Title Color', 'searchify' ),
-			'section'    => 'searchify_section',
+			'label'      => __( 'Title Color', 'talash' ),
+			'section'    => 'talash_section',
 			'settings'   => 'searchify_result_title_color',
 			'priority'   => 2
 		) 
@@ -54,8 +54,8 @@ function search_result($wp_customize) {
 	) );
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'searchify_result_title_hover_color', 
 		array(
-			'label'      => __( 'Title Hover Color', 'searchify' ),
-			'section'    => 'searchify_section',
+			'label'      => __( 'Title Hover Color', 'talash' ),
+			'section'    => 'talash_section',
 			'settings'   => 'searchify_result_title_hover_color',
 			'priority'   => 2
 		) 
@@ -69,8 +69,8 @@ function search_result($wp_customize) {
 	) );
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'searchify_result_author_color', 
 		array(
-			'label'      => __( 'Author Color', 'searchify' ),
-			'section'    => 'searchify_section',
+			'label'      => __( 'Author Color', 'talash' ),
+			'section'    => 'talash_section',
 			'settings'   => 'searchify_result_author_color',
 			'priority'   => 2
 		) 
@@ -84,8 +84,8 @@ function search_result($wp_customize) {
 	) );
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'searchify_result_cat_bg_color', 
 		array(
-			'label'      => __( 'Category Background Color', 'searchify' ),
-			'section'    => 'searchify_section',
+			'label'      => __( 'Category Background Color', 'talash' ),
+			'section'    => 'talash_section',
 			'settings'   => 'searchify_result_cat_bg_color',
 			'priority'   => 2
 		) 
@@ -99,8 +99,8 @@ function search_result($wp_customize) {
 	) );
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'searchify_result_cat_color', 
 		array(
-			'label'      => __( 'Category Color', 'searchify' ),
-			'section'    => 'searchify_section',
+			'label'      => __( 'Category Color', 'talash' ),
+			'section'    => 'talash_section',
 			'settings'   => 'searchify_result_cat_color',
 			'priority'   => 2
 		) 

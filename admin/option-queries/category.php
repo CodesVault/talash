@@ -4,7 +4,7 @@
  *
  * @link       https://abmsourav.com/
  *
- * @package    searchify
+ * @package    talash
  * @author     sourav926 
  */
 namespace Talash\Admin;
@@ -40,9 +40,9 @@ class Category_Query {
 		return $cats;
 	}
 
-	public static function get_cats_by_postTypes($searchify_data) {
+	public static function get_cats_by_postTypes($search_data) {
 		global $wpdb;
-		$post_types = explode(', ', $searchify_data->postType);
+		$post_types = explode(', ', $search_data->postType);
 		$post_types = "'" . implode("','", $post_types) . "'";
 		
 		$cats = self::talash_query(
@@ -67,9 +67,9 @@ class Category_Query {
 		return $cats;
 	}
 
-	public static function get_cats_by_author($searchify_data) {
+	public static function get_cats_by_author($search_data) {
 		global $wpdb;
-		$author_id = $searchify_data->authorID;
+		$author_id = $search_data->authorID;
 
 		$cats = self::talash_query(
 			"SELECT DISTINCT terms.term_id, terms.name
@@ -93,11 +93,11 @@ class Category_Query {
 		return $cats;
 	}
 
-	public static function get_cats_by_postType_author($searchify_data) {
+	public static function get_cats_by_postType_author($search_data) {
 		global $wpdb;
-		$post_types = explode(', ', $searchify_data->postType);
+		$post_types = explode(', ', $search_data->postType);
 		$post_types = "'" . implode("','", $post_types) . "'";
-		$author_id = $searchify_data->authorID;
+		$author_id = $search_data->authorID;
 
 		$cats = self::talash_query(
 			"SELECT DISTINCT terms.term_id, terms.name
