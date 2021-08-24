@@ -96,12 +96,12 @@ function search() {
 		const bodyParams = {
 			action: 'action=get_search_results',
 			nonce: '&security=' + talashPublicApi.nonce,
-			data: '&talash_data=' + JSON.stringify( data )
+			data: '&talash_data=' + JSON.stringify(data)
 		}
 		const args = bodyParams.action + bodyParams.nonce + bodyParams.data
 		fetchData(args, false)
 			.then( function(data) {
-				// console.log(data)
+				console.log(data)
 				setTimeout(function() {
 					loader.classList.remove('show')
 					searchInner.classList.add('show')

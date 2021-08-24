@@ -18,7 +18,7 @@ if ( ! defined( 'ABSPATH' ) ) die;
 define( 'TALASH_VERSION', '0.0.7' );
 define( 'TALASH_URL', plugins_url( '/', __FILE__ ) );
 define( 'TALASH_DIR_PATH', plugin_dir_path( __FILE__ ) );
-define( 'TALASH_ENV_DEV', false );
+define( 'TALASH_ENV_DEV', true );
 
 
 require TALASH_DIR_PATH . '/inc/Talash.php';

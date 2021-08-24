@@ -36,23 +36,28 @@ class Template_Api {
         if ( false == $security ) {
             return;
         }
-		$search_data = json_decode( sanitize_text_field( stripslashes( $_POST['talash_data'] ) ) );
-		$data = null;
 
-		if ( $search_data->catID !== '' && $search_data->authorID === '' ) {
-			$data = PostType_Query::get_postTypes_by_cat($search_data);
-		} elseif ( $search_data->catID === '' && $search_data->authorID !== '' ) {
-			$data = PostType_Query::get_postTypes_by_author($search_data);
-		} elseif ( $search_data->catID !== '' && $search_data->authorID !== '' ) {
-			$data = PostType_Query::get_postTypes_by_cat_author($search_data);
-		} else {
-			$data = PostType_Query::talash_get_postTypes();
+		$post_type = null;
+		$search_data = json_decode( sanitize_text_field( stripslashes( $_POST['talash_data'] ) ) );
+		$search_data = Validator::check_validation($search_data);
+		
+		if ( $search_data ) {
+			$search_data = (object)$search_data;
+			if ( $search_data->catID !== '' && $search_data->authorID === '' ) {
+				$post_type = PostType_Query::get_postTypes_by_cat($search_data);
+			} elseif ( $search_data->catID === '' && $search_data->authorID !== '' ) {
+				$post_type = PostType_Query::get_postTypes_by_author($search_data);
+			} elseif ( $search_data->catID !== '' && $search_data->authorID !== '' ) {
+				$post_type = PostType_Query::get_postTypes_by_cat_author($search_data);
+			} else {
+				$post_type = PostType_Query::talash_get_postTypes();
+			}
 		}
 
-		if ( $data === 'error' ) {
-			wp_send_json("error", 403);
+		if ( $post_type ) {
+			wp_send_json($post_type, 200);
 		} else {
-			wp_send_json($data, 200);
+			wp_send_json("error", 403);
 		}
 		wp_die();
 	}
@@ -62,23 +67,28 @@ class Template_Api {
         if ( false == $security ) {
             return;
         }
+		
+		$cats = null;
 		$search_data = json_decode( sanitize_text_field( stripslashes( $_POST['talash_data'] ) ) );
-		$data = null;
-
-		if ( $search_data->postType !== '' && $search_data->authorID === '' ) {
-			$data = Category_Query::get_cats_by_postTypes($search_data);
-		} elseif ( $search_data->postType === '' && $search_data->authorID !== '' ) {
-			$data = Category_Query::get_cats_by_author($search_data);
-		} elseif ( $search_data->postType !== '' && $search_data->authorID !== '' ) {
-			$data = Category_Query::get_cats_by_postType_author($search_data);
-		} else {
-			$data = Category_Query::talash_get_all_cats();
+		$search_data = Validator::check_validation($search_data);
+		
+		if ( $search_data ) {
+			$search_data = (object)$search_data;
+			if ( $search_data->postType !== '' && $search_data->authorID === '' ) {
+				$cats = Category_Query::get_cats_by_postTypes($search_data);
+			} elseif ( $search_data->postType === '' && $search_data->authorID !== '' ) {
+				$cats = Category_Query::get_cats_by_author($search_data);
+			} elseif ( $search_data->postType !== '' && $search_data->authorID !== '' ) {
+				$cats = Category_Query::get_cats_by_postType_author($search_data);
+			} else {
+				$cats = Category_Query::talash_get_all_cats();
+			}
 		}
 
-		if ( $data === 'error' ) {
-			wp_send_json("error", 403);
+		if ( $cats ) {
+			wp_send_json($cats, 200);
 		} else {
-			wp_send_json($data, 200);
+			wp_send_json("error", 403);
 		}
 
 		wp_die();
@@ -91,16 +101,20 @@ class Template_Api {
         }
 
 		$authors = null;
-		$search_data = json_decode( sanitize_text_field( stripslashes( $_POST['talash_data'] ) ) );
+		$search_data = json_decode( stripslashes( $_POST['talash_data'] ) );
+		$search_data = Validator::check_validation($search_data);
 		
-		if ( empty( $search_data->postType ) && empty( $search_data->catID ) ) {
-			$authors = Author_Query::talash_get_all_author();
-		} elseif ( ! empty( $search_data->postType ) && ! empty( $search_data->catID ) ) {
-			$authors = Author_Query::get_author_by_pt_cat($search_data);
-		} elseif ( empty( $search_data->postType ) && ! empty( $search_data->catID ) ) {
-			$authors = Author_Query::get_author_by_cat($search_data->catID);
-		} elseif ( ! empty( $search_data->postType ) && empty( $search_data->catID ) ) {
-			$authors = Author_Query::get_author_by_pt($search_data->postType);
+		if ( $search_data ) {
+			$search_data = (object)$search_data;
+			if ( empty( $search_data->postType ) && empty( $search_data->catID ) ) {
+				$authors = Author_Query::talash_get_all_author();
+			} elseif ( ! empty( $search_data->postType ) && ! empty( $search_data->catID ) ) {
+				$authors = Author_Query::get_author_by_pt_cat($search_data);
+			} elseif ( empty( $search_data->postType ) && ! empty( $search_data->catID ) ) {
+				$authors = Author_Query::get_author_by_cat($search_data->catID);
+			} elseif ( ! empty( $search_data->postType ) && empty( $search_data->catID ) ) {
+				$authors = Author_Query::get_author_by_pt($search_data->postType);
+			}
 		}
 
 		if ( $authors ) {
@@ -111,17 +125,23 @@ class Template_Api {
 		wp_die();
 	}
 
-	public static function not_found() {
+	public static function not_found($message) {
 		?>
 			<div class="talash-notFound-card">
-				<h2 class="talash-title"><?php _e( 'Nothing Found', 'talash' ); ?></h2>
+				<h2 class="talash-title"><?php echo $message; ?></h2>
 			</div>
 		<?php
 	}
 
 	public static function search_result_markup($data) {
-		if ( empty( $data ) ) {
-			self::not_found();
+		if ( empty( $data ) && $data !== false ) {
+			$message = __( 'Nothing Found', 'talash' );
+			self::not_found($message);
+			return;
+		}
+		if ( $data === false ) {
+			$message = __( 'Data is not valid...', 'talash' );
+			self::not_found($message);
 			return;
 		}
 
@@ -172,12 +192,17 @@ class Template_Api {
         if ( false == $security ) {
             return;
         }
-		$search_data = json_decode( sanitize_text_field( stripslashes( $_POST['talash_data'] ) ) );
+		$search_data = json_decode( stripslashes($_POST['talash_data']) );
+		$data = Validator::check_validation($search_data);
 		
-		$data = Talash_Query::talash_search_query($search_data);
+		if ( $data ) {
+			$data = Talash_Query::talash_search_query((object)$data);
+			self::search_result_markup($data);
+		} else {
+			$data = self::search_result_markup($data);
+		}
 
-		// wp_send_json($data, 200);
-		self::search_result_markup($data);
+		// wp_send_json( $data );
 		wp_die();
 	}
 

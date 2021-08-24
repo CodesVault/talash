@@ -56,7 +56,7 @@ class PostType_Query {
 			[ $search_data->catID, 'publish' ]
 		);
 		if ( is_wp_error( $postTypes ) ) {
-			return 'error';
+			return null;
 		}
 	
 		$all_post_types = self::allowed_postTypes('objects');
@@ -82,7 +82,7 @@ class PostType_Query {
 			[ $search_data->authorID, 'publish' ]
 		);
 		if ( is_wp_error( $postTypes ) ) {
-			return 'error';
+			return null;
 		}
 		
 		$all_post_types = self::allowed_postTypes('objects');
@@ -111,7 +111,7 @@ class PostType_Query {
 			[ $search_data->authorID, $search_data->catID, 'publish' ]
 		);
 		if ( is_wp_error( $postTypes ) ) {
-			return 'error';
+			return null;
 		}
 		
 		$all_post_types = self::allowed_postTypes('objects');

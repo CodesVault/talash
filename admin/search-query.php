@@ -94,7 +94,7 @@ class Talash_Query {
 
 		if ( $search_data->talashKey ) {
 			$data = self::talash_query(
-				"SELECT DISTINCT posts.ID, posts.post_title, terms.name as cat_name
+				"SELECT DISTINCT posts.ID, posts.post_title
 				FROM {$wpdb->prefix}posts posts
 				INNER JOIN {$wpdb->prefix}term_relationships term_rel
 					ON term_rel.object_id = posts.ID
@@ -110,7 +110,7 @@ class Talash_Query {
 			);
 		} else {
 			$data = self::talash_query(
-				"SELECT DISTINCT posts.ID, posts.post_title, terms.name as cat_name
+				"SELECT DISTINCT posts.ID, posts.post_title
 				FROM {$wpdb->prefix}posts posts
 				INNER JOIN {$wpdb->prefix}term_relationships term_rel
 					ON term_rel.object_id = posts.ID
@@ -123,10 +123,11 @@ class Talash_Query {
 				$args
 			);
 		}
-
 		if ( is_wp_error( $data ) ) {
 			return $data;
 		}
+
+		$data = self::add_cats_in_query_result($data, $search_data);
 
 		return $data;
 	}

@@ -36,6 +36,9 @@ class Category_Query {
 				AND terms.name NOT lIKE '%exclude%'",
 			[ 'publish', 'post_tag' ]
 		);
+		if ( is_wp_error( $cats ) ) {
+			return null;
+		}
 
 		return $cats;
 	}
@@ -61,7 +64,7 @@ class Category_Query {
 			[ 'publish', 'post_tag' ]
 		);
 		if ( is_wp_error( $cats ) ) {
-			return 'error';
+			return null;
 		}
 
 		return $cats;
@@ -87,7 +90,7 @@ class Category_Query {
 			[ 'publish', 'post_tag' ]
 		);
 		if ( is_wp_error( $cats ) ) {
-			return 'error';
+			return null;
 		}
 
 		return $cats;
@@ -116,7 +119,7 @@ class Category_Query {
 			[ 'publish', 'post_tag' ]
 		);
 		if ( is_wp_error( $cats ) ) {
-			return 'error';
+			return null;
 		}
 
 		return $cats;
