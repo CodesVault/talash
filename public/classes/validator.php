@@ -14,20 +14,20 @@ class Validator {
 	private static $result = [];
 
 	public static function check_validation($data) {
-		if ( ! is_object( $data ) ) return self::$result = false;
+		if ( ! is_object( $data ) ) return false;
 
 		foreach ( $data as $key => $input_data ) {
 			if ( $key == 'talashKey' || $key == 'postType' ) {
 				self::string_check( $input_data, $key );
-				if ( ! self::$result ) return self::$result = false;
+				if ( ! self::$result ) return false;
 			}
 			if ( $key == 'catID' || $key == 'authorID' ) {
 				self::number_check( $input_data, $key );
-				if ( ! self::$result ) return self::$result = false;
+				if ( ! self::$result ) return false;
 			} 
 			if ( $key == 'dateRangeStart' || $key == 'dateRangeEnd' ) {
 				self::date_check( $input_data, $key );
-				if ( ! self::$result ) return self::$result = false;
+				if ( ! self::$result ) return false;
 			}
 		}
 
@@ -70,8 +70,10 @@ class Validator {
 
 	private static function date_check($value, $key) {
 		$date = sanitize_text_field( $value );
-		if ( ! self::date_validator( $date ) ) return self::$result = false;
+		if ( ! self::date_validator( $date ) ) {
+			return self::$result = false;
+		}
 
-		return self::$result[$key] = $value;
+		return self::$result[$key] = $date;
 	}
 }

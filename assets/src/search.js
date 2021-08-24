@@ -89,6 +89,7 @@ function search() {
 			// console.log(key, val)
 			data[key] = val
 		}
+		data.catID = 'hello'
 
 		// search by tooltip log
 		searchByLog(data)
