@@ -38,7 +38,7 @@ class Template_Api {
         }
 
 		$post_type = null;
-		$search_data = json_decode( sanitize_text_field( stripslashes( $_POST['talash_data'] ) ) );
+		$search_data = json_decode( stripslashes( $_POST['talash_data'] ) );
 		$search_data = Validator::check_validation($search_data);
 		
 		if ( $search_data ) {
@@ -67,9 +67,9 @@ class Template_Api {
         if ( false == $security ) {
             return;
         }
-		
+
 		$cats = null;
-		$search_data = json_decode( sanitize_text_field( stripslashes( $_POST['talash_data'] ) ) );
+		$search_data = json_decode( stripslashes( $_POST['talash_data'] ) );
 		$search_data = Validator::check_validation($search_data);
 		
 		if ( $search_data ) {

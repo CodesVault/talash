@@ -4,9 +4,9 @@
 
 	<form id="talash-form">
 		<div class="search-bar">
-			<div class="search-bar__inner" talash-tooltip="CTRL + SHIFT + F">
+			<div class="search-bar__inner" talash-tooltip="<?php echo esc_attr( 'CTRL + SHIFT + F' ); ?>">
 				<input class="search-bar__input" name="talashKey" type="text" data-key="<?php echo esc_attr( 'Key' ); ?>" placeholder="<?php echo esc_attr__( 'Search', 'talash' ); ?>" autocomplete="off">
-				<div class="search-bar__clear-input" talash-tooltip="Clear">x</div>
+				<div class="search-bar__clear-input" talash-tooltip="<?php echo esc_attr__( 'Clear', 'talash' ); ?>">x</div>
 			</div>
 			<button type="submit" class="search-bar__btn-search" talash-tooltip="<?php echo esc_attr__( 'Search', 'talash' ); ?>">
 				<svg fill="#000000" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 50 50" width="20px" height="20px">
@@ -52,18 +52,24 @@
 			<!-- popups -->
 			<div class="talash-inner-popup" id="postType-popup">
 				<div class="talash-loader" id="postType-loader"><div></div></div>
-				<div class="talash-popup__input-close" id="postType-close"><a talash-tooltip="Close">x</a></div>
+				<div class="talash-popup__input-close" id="postType-close">
+					<a talash-tooltip="<?php echo esc_attr( 'Close', 'talash' ); ?>"><?php echo esc_html( 'x' ); ?></a>
+				</div>
 				<div id="postType-popup__input" class="talash-popup__input"></div>
 			</div>
 			<div class="talash-inner-popup" id="cat-popup">
 				<div class="talash-loader" id="cat-loader"><div></div></div>
-				<div class="talash-popup__input-close" id="cat-close"><a talash-tooltip="Close">x</a></div>
+				<div class="talash-popup__input-close" id="cat-close">
+					<a talash-tooltip="<?php echo esc_attr__( 'Close', 'talash' ); ?>"><?php echo esc_html( 'x' ); ?></a>
+				</div>
 				<div id="cat-popup__input" class="talash-popup__input"></div>
 			</div>
 			<div class="talash-inner-popup" id="author-popup">
 				<div class="talash-loader" id="author-loader"><div></div></div>
-				<div class="talash-popup__input-close" id="author-close"><a talash-tooltip="Close">x</a></div>
-				<div id="author-popup__input" class="talash-popup__input" data-avatar-url="<?php echo esc_attr( TALASH_URL . 'assets/images/talash-placeholder.png' ); ?>"></div>
+				<div class="talash-popup__input-close" id="author-close">
+					<a talash-tooltip="<?php echo esc_attr__( 'Close', 'talash' ); ?>"><?php echo esc_html( 'x' ); ?></a>
+				</div>
+				<div id="author-popup__input" class="talash-popup__input" data-avatar-url="<?php echo esc_url( TALASH_URL . 'assets/images/talash-placeholder.png' ); ?>"></div>
 			</div>
 
 			<div class="talash-reset-wrapper">
@@ -75,7 +81,7 @@
 		<div class="talash-result">
 			<div class="talash-result__header">
 				<div class="talash-search-by" data-search-by=""><?php _e( 'Searched by', 'talash' ); ?></div>
-				<div class="talash-result-close"><a talash-search-tooltip="Close">x</a></div>
+				<div class="talash-result-close"><a talash-search-tooltip="<?php echo esc_attr__( 'Close', 'talash' ); ?>"><?php echo esc_html( 'x' ); ?></a></div>
 			</div>
 			<div class="talash-loader" id="search-loader"><div></div></div>
 			<div class="talash-result__inner"></div>
