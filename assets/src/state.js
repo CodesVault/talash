@@ -8,16 +8,15 @@ class SearchifyState {
 
 	static currentState(name = null) {
 		if (name === 'postType') {
-			return SearchifyState.state
+			return SearchifyState.state.postType
 		} else if (name === 'cat') {
-			return SearchifyState.cat
+			return SearchifyState.state.cat
 		} else if (name === 'author') {
-			return SearchifyState.author
+			return SearchifyState.state.author
 		}
 	}
 
 	static setState(name = null) {
-		// console.log(SearchifyState.state)
 		if (name === 'postType') {
 			SearchifyState.state.postType++
 		} else if (name === 'cat') {
@@ -25,6 +24,7 @@ class SearchifyState {
 		} else if (name === 'author') {
 			SearchifyState.state.author++
 		}
+		console.log(SearchifyState.state)
 	}
 
 	static resetState() {

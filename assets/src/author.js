@@ -66,15 +66,12 @@ function changeAuthor() {
 
 	fetchData(args)
 		.then( function(data) {
-			// console.log(data);
 			if (data) {
 				loader.classList.remove('show')
 				authorPopupInput.classList.add('show')
-
 				
 				let options = ``
 				data.forEach(element => {
-					// console.log(element.avatar_url)
 					options += `<li class='author-li'>
 					<div class='author-li__inner' data-authorID=${element.ID}>
 					<img src="${element.avatar_url}"><div>${element.display_name}</div>

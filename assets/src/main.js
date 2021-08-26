@@ -10,7 +10,8 @@ const { reset } = require('./reset')
 const { keyShortCut } = require('./keyShortCut')
 
 document.addEventListener("DOMContentLoaded", function() {
-	if (document.readyState === "interactive" || document.readyState === "complete" ) {
+	const talash = document.querySelector('#talash');
+	if (talash && (document.readyState === "interactive" || document.readyState === "complete") ) {
 		keyShortCut();
 		clearInput();
 		advancedOption();

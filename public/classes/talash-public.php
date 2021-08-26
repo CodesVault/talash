@@ -15,6 +15,8 @@ class Talash_Public {
 	static function load_frontend() {
 		self::load_dependencies();
 
+		global $post;
+		print_r($post);
 		Assets_Manager::init();
 		Template_Api::load_api();
 
