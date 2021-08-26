@@ -24,7 +24,6 @@ class SearchifyState {
 		} else if (name === 'author') {
 			SearchifyState.state.author++
 		}
-		console.log(SearchifyState.state)
 	}
 
 	static resetState() {

@@ -30,7 +30,6 @@ function validation() {
 
 	if (searchInput.value == '') {
 		if (postType.value == '' && catID.value == '' && authorID.value == '') {
-			// console.log('empty...')
 			return false;
 		}
 	}
@@ -101,7 +100,6 @@ function search() {
 		const args = bodyParams.action + bodyParams.nonce + bodyParams.data
 		fetchData(args, false)
 			.then( function(data) {
-				console.log(data)
 				setTimeout(function() {
 					loader.classList.remove('show')
 					searchInner.classList.add('show')

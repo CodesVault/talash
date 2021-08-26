@@ -1,6 +1,6 @@
 === Talash ===
 Plugin Name: Talash
-Version: 0.0.7
+Version: 0.0.9
 Author: sourav926
 Author URI: https://abmsourav.com/
 Contributors: sourav926
@@ -40,8 +40,13 @@ Yes, It supports ShortCode.
 
 == Changelog ==
 
+= 0.0.9 - 26-08-2021 =
+- New: Sanitization, validation
+
 = 0.0.7 - 23-08-2021 =
 - New: Initial release
 
 == Upgrade Notice ==
+0.0.9 - Review fixing.
+
 0.0.7 - Initial Realease of Searchify.

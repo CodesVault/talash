@@ -66,7 +66,6 @@ function changePostType() {
 	fetchData(args)
 		.then( function(data) {
 			if (data !== 'error') {
-				// console.log(data)
 				postTypeLoader.classList.remove('show')
 				
 				let options = ''
