@@ -86,11 +86,7 @@ class Template_Api {
 			}
 		}
 
-		if ( $cats ) {
-			wp_send_json($cats, 200);
-		} else {
-			wp_send_json("error", 403);
-		}
+		Template_Markup::categories_markup($cats);
 
 		wp_die();
 	}

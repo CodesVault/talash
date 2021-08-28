@@ -19,6 +19,24 @@ class Template_Markup {
 			</div>
 		<?php
 	}
+
+	public static function categories_markup($cats) {
+		if ( ! $cats ) {
+			$message = __( 'Nothing Found', 'talash' );
+			self::not_found($message);
+			return;
+		}
+
+		foreach ( $cats as $cat ) :
+		?>
+			<li class='cat-li'>
+				<div class='cat-li__inner' data-catID=<?php echo esc_attr( $cat->term_id ); ?>>
+					<?php echo esc_html( $cat->name ); ?>
+				</div>
+			</li>
+		<?php
+		endforeach;
+	}
 	
 	public static function author_markup($authors) {
 		if ( ! $authors ) {

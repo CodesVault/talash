@@ -14,7 +14,6 @@ function selectAuthor() {
 	if (authorLi) {
 		authorLi.forEach((val, index) => {
 			authorLi[index].onclick = function(event) {
-
 				if ((event.ctrlKey || event.metaKey)) {
 					if (currentState('author') > 1) reset(true, true, true, false)
 
@@ -34,7 +33,7 @@ function selectAuthor() {
 						}
 					});
 
-					authorLabel.textContent = authorLi[index].childNodes[2].textContent
+					authorLabel.textContent = authorLi[index].childNodes[3].textContent
 					authorData.value = authorLi[index].getAttribute('data-authorID')
 					authorLabel.removeAttribute('talash-tooltip')
 
@@ -66,14 +65,12 @@ function changeAuthor() {
 
 	fetchData(args, false)
 		.then( function(data) {
-			if (data) {
-				loader.classList.remove('show')
-				authorPopupInput.classList.add('show')
-				authorPopupInput.innerHTML = data
+			loader.classList.remove('show')
+			authorPopupInput.classList.add('show')
+			authorPopupInput.innerHTML = data
 
-				innerPopupClose();
-				selectAuthor();
-			}
+			innerPopupClose();
+			selectAuthor();
 		})
 		.catch( function(error) {
 			console.log(error.message);

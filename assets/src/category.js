@@ -63,21 +63,14 @@ const changeCat = () => {
 	}
 	const args = bodyParams.action + bodyParams.nonce + bodyParams.data
 
-	fetchData(args)
+	fetchData(args, false)
 		.then(function(data) {
-			if (data != 'error') {
-				catLoader.classList.remove('show')
+			catLoader.classList.remove('show')
+			catPopupInput.innerHTML = data
+			catPopupInput.classList.add('show')
 
-				let options = ''
-				data.forEach(element => {
-					options += `<li class='cat-li'><div class='cat-li__inner' data-catID=${element.term_id}>${element.name}</div></li>`
-				});
-				catPopupInput.innerHTML = options
-				catPopupInput.classList.add('show')
-
-				innerPopupClose();
-				selectCat();
-			}
+			innerPopupClose();
+			selectCat();
 		})
 		.catch( function(error) {
 			console.log(error.message);
