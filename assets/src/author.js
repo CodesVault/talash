@@ -64,21 +64,12 @@ function changeAuthor() {
 	}
 	const args = bodyParams.action + bodyParams.nonce + bodyParams.data
 
-	fetchData(args)
+	fetchData(args, false)
 		.then( function(data) {
 			if (data) {
 				loader.classList.remove('show')
 				authorPopupInput.classList.add('show')
-				
-				let options = ``
-				data.forEach(element => {
-					options += `<li class='author-li'>
-					<div class='author-li__inner' data-authorID=${element.ID}>
-					<img src="${element.avatar_url}"><div>${element.display_name}</div>
-					</div>
-					</li>`
-				});
-				authorPopupInput.innerHTML = options
+				authorPopupInput.innerHTML = data
 
 				innerPopupClose();
 				selectAuthor();

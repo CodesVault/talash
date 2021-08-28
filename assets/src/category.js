@@ -66,7 +66,6 @@ const changeCat = () => {
 	fetchData(args)
 		.then(function(data) {
 			if (data != 'error') {
-				// console.log(data)
 				catLoader.classList.remove('show')
 
 				let options = ''

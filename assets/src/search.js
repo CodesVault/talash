@@ -85,7 +85,6 @@ function search() {
 		const data = {}
 		const formData = new FormData(searchSubmit)
 		for (let [key, val] of formData.entries()) {
-			// console.log(key, val)
 			data[key] = val
 		}
 

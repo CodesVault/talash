@@ -26,6 +26,7 @@ class Talash_Public {
 	static function load_dependencies() {
 		require_once TALASH_DIR_PATH . 'public/classes/assets_meneger.php';
 		require_once TALASH_DIR_PATH . 'public/classes/validator.php';
+		require_once TALASH_DIR_PATH . 'public/classes/template-markup.php';
 		require_once TALASH_DIR_PATH . 'public/classes/template-api.php';
 	}
 

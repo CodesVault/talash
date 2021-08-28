@@ -38,11 +38,11 @@ class Template_Api {
         }
 
 		$post_type = null;
-		$search_data = json_decode( stripslashes( $_POST['talash_data'] ) );
+		$search_data = json_decode( stripslashes( $_POST['talash_data'] ), true );
+		$search_data = Validator::data_sanitization( $search_data, ['catID', 'authorID'] );
 		$search_data = Validator::check_validation($search_data);
 		
 		if ( $search_data ) {
-			$search_data = (object)$search_data;
 			if ( $search_data->catID !== '' && $search_data->authorID === '' ) {
 				$post_type = PostType_Query::get_postTypes_by_cat($search_data);
 			} elseif ( $search_data->catID === '' && $search_data->authorID !== '' ) {
@@ -69,7 +69,8 @@ class Template_Api {
         }
 
 		$cats = null;
-		$search_data = json_decode( stripslashes( $_POST['talash_data'] ) );
+		$search_data = json_decode( stripslashes( $_POST['talash_data'] ), true );
+		$search_data = Validator::data_sanitization( $search_data, ['postType', 'authorID'] );
 		$search_data = Validator::check_validation($search_data);
 		
 		if ( $search_data ) {
@@ -101,7 +102,8 @@ class Template_Api {
         }
 
 		$authors = null;
-		$search_data = json_decode( stripslashes( $_POST['talash_data'] ) );
+		$search_data = json_decode( stripslashes( $_POST['talash_data'] ), true );
+		$search_data = Validator::data_sanitization( $search_data, ['postType', 'catID'] );
 		$search_data = Validator::check_validation($search_data);
 		
 		if ( $search_data ) {
@@ -118,7 +120,8 @@ class Template_Api {
 		}
 
 		if ( $authors ) {
-			wp_send_json($authors, 200);
+			// wp_send_json($authors, 200);
+			Template_Markup::author_markup($authors);
 		} else {
 			wp_send_json($authors, 404);
 		}
@@ -192,11 +195,15 @@ class Template_Api {
         if ( false == $security ) {
             return;
         }
-		$search_data = json_decode( stripslashes($_POST['talash_data']) );
+		$search_data = json_decode( stripslashes( $_POST['talash_data'] ), true );
+		$search_data = Validator::data_sanitization(
+			$search_data,
+			['talashKey', 'postType', 'catID', 'dateRangeStart', 'dateRangeEnd', 'authorID']
+		);
 		$data = Validator::check_validation($search_data);
 		
 		if ( $data ) {
-			$data = Talash_Query::talash_search_query((object)$data);
+			$data = Talash_Query::talash_search_query($data);
 			self::search_result_markup($data);
 		} else {
 			$data = self::search_result_markup($data);
