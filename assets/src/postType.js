@@ -63,23 +63,14 @@ function changePostType() {
 	}
 	const args = bodyParams.action + bodyParams.nonce + bodyParams.data
 
-	fetchData(args)
+	fetchData(args, false)
 		.then( function(data) {
-			if (data !== 'error') {
-				postTypeLoader.classList.remove('show')
-				
-				let options = ''
-				data.forEach(element => {
-					options += `<li class='post-type-li'>
-					<div class='post-type-li__inner' data-postType=${element}>${element}</div>
-					</li>`
-				});
-				postTypeInput.innerHTML = options
-				postTypeInput.classList.add('show')
+			postTypeLoader.classList.remove('show')
+			postTypeInput.innerHTML = data
+			postTypeInput.classList.add('show')
 
-				innerPopupClose();
-				selectPostType();
-			}
+			innerPopupClose();
+			selectPostType();
 		})
 		.catch( function(error) {
 			console.log(error.message);

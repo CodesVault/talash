@@ -20,9 +20,27 @@ class Template_Markup {
 		<?php
 	}
 
+	public static function postType_markup($post_types) {
+		if ( ! $post_types ) {
+			$message = __( 'Post types not found', 'talash' );
+			self::not_found($message);
+			return;
+		}
+
+		foreach ( $post_types as $post_type ) :
+		?>
+			<li class='post-type-li'>
+				<div class='post-type-li__inner' data-postType="<?php echo esc_attr( $post_type ); ?>">
+					<?php echo esc_html( $post_type ); ?>
+				</div>
+			</li>
+		<?php
+		endforeach;
+	}
+
 	public static function categories_markup($cats) {
 		if ( ! $cats ) {
-			$message = __( 'Nothing Found', 'talash' );
+			$message = __( 'Categories not found', 'talash' );
 			self::not_found($message);
 			return;
 		}
@@ -40,7 +58,7 @@ class Template_Markup {
 	
 	public static function author_markup($authors) {
 		if ( ! $authors ) {
-			$message = __( 'Nothing Found', 'talash' );
+			$message = __( 'Author not found', 'talash' );
 			self::not_found($message);
 			return;
 		}
