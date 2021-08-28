@@ -5,7 +5,7 @@
 	<form id="talash-form">
 		<div class="search-bar">
 			<div class="search-bar__inner" talash-tooltip="<?php echo esc_attr( 'CTRL + SHIFT + F' ); ?>">
-				<input class="search-bar__input" name="talashKey" type="text" data-key="<?php echo esc_attr( 'Key' ); ?>" placeholder="<?php echo esc_attr__( 'Search', 'talash' ); ?>" autocomplete="off">
+				<input class="search-bar__input" name="talashKey" type="text" placeholder="<?php echo esc_attr__( 'Search', 'talash' ); ?>" autocomplete="off">
 				<div class="search-bar__clear-input" talash-tooltip="<?php echo esc_attr__( 'Clear', 'talash' ); ?>">x</div>
 			</div>
 			<button type="submit" class="search-bar__btn-search" talash-tooltip="<?php echo esc_attr__( 'Search', 'talash' ); ?>">
@@ -73,15 +73,17 @@
 			</div>
 
 			<div class="talash-reset-wrapper">
-				<a class="talash-reset"><?php _e( 'Reset', 'talash' ); ?></a>
+				<a class="talash-reset"><?php esc_html_e( 'Reset', 'talash' ); ?></a>
 			</div>
 
 		</div>
 
 		<div class="talash-result">
 			<div class="talash-result__header">
-				<div class="talash-search-by" data-search-by=""><?php _e( 'Searched by', 'talash' ); ?></div>
-				<div class="talash-result-close"><a talash-search-tooltip="<?php echo esc_attr__( 'Close', 'talash' ); ?>"><?php echo esc_html( 'x' ); ?></a></div>
+				<div class="talash-search-by" data-search-by=""><?php esc_html_e( 'Searched by', 'talash' ); ?></div>
+				<div class="talash-result-close">
+					<a talash-search-tooltip="<?php echo esc_attr__( 'Close', 'talash' ); ?>"><?php echo esc_html( 'x' ); ?></a>
+				</div>
 			</div>
 			<div class="talash-loader" id="search-loader"><div></div></div>
 			<div class="talash-result__inner"></div>
