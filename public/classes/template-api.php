@@ -119,75 +119,8 @@ class Template_Api {
 			}
 		}
 
-		if ( $authors ) {
-			// wp_send_json($authors, 200);
-			Template_Markup::author_markup($authors);
-		} else {
-			wp_send_json($authors, 404);
-		}
+		Template_Markup::author_markup($authors);
 		wp_die();
-	}
-
-	public static function not_found($message) {
-		?>
-			<div class="talash-notFound-card">
-				<h2 class="talash-title"><?php echo $message; ?></h2>
-			</div>
-		<?php
-	}
-
-	public static function search_result_markup($data) {
-		if ( empty( $data ) && $data !== false ) {
-			$message = __( 'Nothing Found', 'talash' );
-			self::not_found($message);
-			return;
-		}
-		if ( $data === false ) {
-			$message = __( 'Data is not valid...', 'talash' );
-			self::not_found($message);
-			return;
-		}
-
-		foreach ( $data as $post ) :
-			$post_title = $post->post_title;
-			$title_split = explode( ' ', $post->post_title );
-			if ( count( $title_split ) > 10 ) {
-				$title_shorten = array_slice( $title_split, 0, 10 );
-				$post_title = implode( ' ', $title_shorten ) . '...';
-			}
-			?>
-			<div class="talash-card">
-				<?php
-				if ( has_post_thumbnail( $post->ID ) ) {
-					$thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'thumbnail' );
-					$thumbnail_image_url = $thumbnail[0];
-				} else {
-					$thumbnail_image_url = TALASH_URL . 'assets/images/talash-placeholder.png';
-				}
-				?>
-				<div class="talash-thumbnail-wrap">
-					<img class="talash-thumbnail" src="<?php echo esc_url( $thumbnail_image_url ); ?>" alt="<?php echo esc_attr( $post->post_title ); ?>">
-				</div>
-				<div class="talash-card__inner">
-					<h2 class="talash-title">
-						<a href="<?php echo get_the_permalink( $post->ID ); ?>">
-							<?php echo esc_html( $post_title ); ?>
-						</a>
-					</h2>
-
-					<div class="talash-post-meta">
-						<?php if ( isset( $post->cat_name ) ) : ?>
-							<div class="cat-meta"><?php echo esc_html( $post->cat_name ); ?></div>
-						<?php endif; ?>
-
-						<?php if ( isset( $post->post_author ) ) : ?>
-							<div class="author-meta"><?php echo get_the_author_meta( 'display_name', $post->post_author ); ?></div>
-						<?php endif; ?>
-					</div>
-				</div>
-			</div>
-		<?php
-		endforeach;
 	}
 
 	public static function get_search_results() {
@@ -202,12 +135,8 @@ class Template_Api {
 		);
 		$data = Validator::check_validation($search_data);
 		
-		if ( $data ) {
-			$data = Talash_Query::talash_search_query($data);
-			self::search_result_markup($data);
-		} else {
-			$data = self::search_result_markup($data);
-		}
+		$data = Talash_Query::talash_search_query($data);
+		Template_Markup::search_result_markup($data);
 
 		// wp_send_json( $data );
 		wp_die();
