@@ -39,8 +39,8 @@ class Template_Api {
 
 		$post_type = null;
 		$search_data = json_decode( stripslashes( $_POST['talash_data'] ), true );
-		$search_data = Validator::data_sanitization( $search_data, ['catID', 'authorID'] );
-		$search_data = Validator::check_validation($search_data);
+		$search_data = Filter::data_sanitization( $search_data, ['catID', 'authorID'] );
+		$search_data = Filter::check_validation($search_data);
 		
 		if ( $search_data ) {
 			if ( $search_data->catID !== '' && $search_data->authorID === '' ) {
@@ -66,8 +66,8 @@ class Template_Api {
 
 		$cats = null;
 		$search_data = json_decode( stripslashes( $_POST['talash_data'] ), true );
-		$search_data = Validator::data_sanitization( $search_data, ['postType', 'authorID'] );
-		$search_data = Validator::check_validation($search_data);
+		$search_data = Filter::data_sanitization( $search_data, ['postType', 'authorID'] );
+		$search_data = Filter::check_validation($search_data);
 		
 		if ( $search_data ) {
 			$search_data = (object)$search_data;
@@ -94,8 +94,8 @@ class Template_Api {
 
 		$authors = null;
 		$search_data = json_decode( stripslashes( $_POST['talash_data'] ), true );
-		$search_data = Validator::data_sanitization( $search_data, ['postType', 'catID'] );
-		$search_data = Validator::check_validation($search_data);
+		$search_data = Filter::data_sanitization( $search_data, ['postType', 'catID'] );
+		$search_data = Filter::check_validation($search_data);
 		
 		if ( $search_data ) {
 			$search_data = (object)$search_data;
@@ -120,11 +120,11 @@ class Template_Api {
             return;
         }
 		$search_data = json_decode( stripslashes( $_POST['talash_data'] ), true );
-		$search_data = Validator::data_sanitization(
+		$search_data = Filter::data_sanitization(
 			$search_data,
 			['talashKey', 'postType', 'catID', 'dateRangeStart', 'dateRangeEnd', 'authorID']
 		);
-		$data = Validator::check_validation($search_data);
+		$data = Filter::check_validation($search_data);
 		
 		$data = Talash_Query::talash_search_query($data);
 		Template_Markup::search_result_markup($data);

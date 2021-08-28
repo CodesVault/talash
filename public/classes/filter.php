@@ -1,6 +1,6 @@
 <?php
 /**
- * Form data validation.
+ * Form data validation, sanitization.
  *
  * @link       https://abmsourav.com/
  *
@@ -9,7 +9,8 @@
  */
 namespace Talash\View;
 
-class Validator {
+
+class Filter {
 
 	private static $result = [];
 

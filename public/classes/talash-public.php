@@ -15,8 +15,6 @@ class Talash_Public {
 	static function load_frontend() {
 		self::load_dependencies();
 
-		global $post;
-		print_r($post);
 		Assets_Manager::init();
 		Template_Api::load_api();
 
@@ -25,7 +23,7 @@ class Talash_Public {
 
 	static function load_dependencies() {
 		require_once TALASH_DIR_PATH . 'public/classes/assets_meneger.php';
-		require_once TALASH_DIR_PATH . 'public/classes/validator.php';
+		require_once TALASH_DIR_PATH . 'public/classes/filter.php';
 		require_once TALASH_DIR_PATH . 'public/classes/template-markup.php';
 		require_once TALASH_DIR_PATH . 'public/classes/template-api.php';
 	}
