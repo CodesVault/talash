@@ -17,7 +17,7 @@ function search_button($wp_customize) {
 	) );
 
 	$wp_customize->add_setting( 'talash_button_icon_color', array(
-		'default' 			=> '#000000',
+		'default' 			=> '#ffd300',
 		'capability'    	=> 'edit_theme_options',
 		'sanitize_callback' => 'sanitize_hex_color',
 		'transport' 		=> 'postMessage'
@@ -47,7 +47,7 @@ function search_button($wp_customize) {
 	) );
 
 	$wp_customize->add_setting( 'talash_button_background_color', array(
-		'default' 			=> '#ffd300',
+		'default' 			=> '#fff',
 		'capability'    	=> 'edit_theme_options',
 		'sanitize_callback' => 'sanitize_hex_color',
 		'transport' 		=> 'postMessage'

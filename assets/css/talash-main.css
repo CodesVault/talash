@@ -51,7 +51,7 @@
 .search-bar {
 	display: flex;
 	width: 100%;
-	box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.33);
+	box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.25);
 	border-radius: 40px;
 }
 .search-bar.unfold {
@@ -72,6 +72,8 @@
 
 .search-bar .search-bar__input {
 	flex: 1;
+	background-color: #f9f9f1;
+	color: #646464;
 	padding: 15px 10px 15px 20px;
 	margin: 0;
 	border: none;
@@ -90,6 +92,9 @@
 	border-bottom-left-radius: 0;
 	background-color: #f2f2f2;
 }
+.search-bar .search-bar__input::placeholder {
+    color: #9e9e9e;
+}
 
 .search-bar__clear-input {
 	display: none;
@@ -107,7 +112,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-    background-color: #ffd300;
+    background-color: #fff;
 	border: none;
 	outline: none;
 	cursor: pointer;
@@ -125,6 +130,12 @@
 }
 .talash form .search-bar button.search-bar__btn-search:hover {
 	background-color: #ffdf00;
+}
+.talash form .search-bar button.search-bar__btn-search:hover svg {
+	fill: #000000;
+}
+.talash form .search-bar button.search-bar__btn-search:hover path {
+	stroke: #000000;
 }
 
 .search-bar .search-bar__btn-search img {
