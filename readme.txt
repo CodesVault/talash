@@ -12,7 +12,7 @@ Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Talash is an advanced search plugin for WordPress.
+Talash is an advanced search plugin for WordPress. Next Level of WordPress search experience.
  
 == Description ==
 Search any types of WordPress posts using Talash including Post, WooCommerce Product, Custom Post Type, etc.

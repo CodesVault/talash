@@ -9,6 +9,7 @@
  */
 namespace Talash\View;
 
+
 class Assets_Manager {
 
 	public static function init() {
@@ -34,7 +35,7 @@ class Assets_Manager {
 			wp_enqueue_script( 'talash-daterangepicker', TALASH_URL . 'assets/vendors/date-range-picker/daterangepicker.js', array( 'jquery' ), TALASH_VERSION, true  );
 		
 			if ( TALASH_ENV_DEV ) {
-				wp_enqueue_script( 'talash-main', TALASH_URL . 'assets/js/talash-main.js', array( 'jquery' ), TALASH_VERSION . time(), true  );
+				wp_enqueue_script( 'talash-main', TALASH_URL . 'assets/js/talash-main.js', array( 'jquery' ), TALASH_VERSION, true  );
 			} else {
 				wp_enqueue_script( 'talash-main', TALASH_URL . 'assets/js/talash-main.min.js', array( 'jquery' ), TALASH_VERSION, true  );
 			}

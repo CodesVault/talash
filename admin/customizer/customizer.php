@@ -7,6 +7,7 @@
  */
 namespace Talash\Admin;
 
+
 class Talash_Customize {
 
 	public $customizer_dir = TALASH_DIR_PATH . 'admin/customizer/';

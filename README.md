@@ -1,6 +1,6 @@
 # Talash
 
-Talash is an advanced search plugin for WordPress.
+Talash is an advanced search plugin for WordPress. Next Level of WordPress search experience.
 
 Search any types of WordPress posts using Talash including Post, WooCommerce Product, Custom Post Type, etc.
 Talash search contents for you without page reload. You will get search results by AJAX call, which will give you a better experience and also saves time of users by removing page reload. You'll get modern design which is inspired by Google Search.

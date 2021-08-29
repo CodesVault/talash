@@ -1,6 +1,6 @@
 <?php
 /**
- * The core plugin class
+ * Markups for the frontend.
  *
  * @link       https://abmsourav.com/
  *

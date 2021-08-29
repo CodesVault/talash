@@ -1,6 +1,6 @@
 <?php
 /**
- * The core plugin class
+ * Main class for the Backend.
  *
  * @link       https://abmsourav.com/
  *
@@ -10,6 +10,7 @@
 namespace Talash\Admin;
 
 use Talash\Admin\Talash_Customize;
+
 
 class Talash_Admin {
 

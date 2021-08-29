@@ -10,7 +10,7 @@ class Talash_Heading_Control extends WP_Customize_Control {
 				<?php echo esc_html( $this->label ); ?>
 			</h4>
 			<?php if ( ! empty( $this->description ) ) : ?>
-				<span class="description customize-control-description"><?php echo $this->description; ?></span>
+				<span class="description customize-control-description"><?php echo esc_html( $this->description ); ?></span>
 			<?php endif; ?>
 		</label>
 		<?php

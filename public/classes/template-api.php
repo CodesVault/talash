@@ -1,6 +1,6 @@
 <?php
 /**
- * The core plugin class
+ * Engine for the frontend data traverse.
  *
  * @link       https://abmsourav.com/
  *
