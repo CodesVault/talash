@@ -9,6 +9,8 @@
  */
 namespace Talash\View;
 
+use Talash\View\Template_Api;
+
 
 class Talash_Public {
 

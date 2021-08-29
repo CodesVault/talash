@@ -29,13 +29,13 @@ class Assets_Manager {
 
 	public static function scripts() {
 		global $post;
-
+		
 		if ( isset( $post->post_content ) && has_shortcode( $post->post_content, 'talash-search' ) ) {
 			wp_enqueue_script( 'talash-moment', TALASH_URL . 'assets/vendors/date-range-picker/moment.min.js', array( 'jquery' ), TALASH_VERSION, true  );
 			wp_enqueue_script( 'talash-daterangepicker', TALASH_URL . 'assets/vendors/date-range-picker/daterangepicker.js', array( 'jquery' ), TALASH_VERSION, true  );
 		
 			if ( TALASH_ENV_DEV ) {
-				wp_enqueue_script( 'talash-main', TALASH_URL . 'assets/js/talash-main.js', array( 'jquery' ), TALASH_VERSION, true  );
+				wp_enqueue_script( 'talash-main', TALASH_URL . 'assets/js/talash-main.js', array( 'jquery' ), TALASH_VERSION . time(), true  );
 			} else {
 				wp_enqueue_script( 'talash-main', TALASH_URL . 'assets/js/talash-main.min.js', array( 'jquery' ), TALASH_VERSION, true  );
 			}
@@ -44,7 +44,7 @@ class Assets_Manager {
 
 	public static function public_api() {
 		global $post;
-
+		
 		if ( isset( $post->post_content ) && has_shortcode( $post->post_content, 'talash-search' ) ) {
 			wp_localize_script( 
 				'talash-main',
