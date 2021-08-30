@@ -17,7 +17,7 @@ function input_field($wp_customize) {
 	) );
 
 	$wp_customize->add_setting( 'talash_input_background_color', array(
-		'default' 			=> '#f9f9f1',
+		'default' 			=> '#f2f2f2',
 		'capability'    	=> 'edit_theme_options',
 		'sanitize_callback' => 'sanitize_hex_color',
 		'transport' 		=> 'postMessage'

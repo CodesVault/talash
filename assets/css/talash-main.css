@@ -72,7 +72,7 @@
 
 .search-bar .search-bar__input {
 	flex: 1;
-	background-color: #f9f9f1;
+	background-color: #f2f2f2;
 	color: #646464;
 	padding: 15px 10px 15px 20px;
 	margin: 0;
@@ -131,10 +131,17 @@
 .talash form .search-bar button.search-bar__btn-search:hover {
 	background-color: #ffdf00;
 }
-.talash form .search-bar button.search-bar__btn-search:hover svg {
+
+.talash button.search-bar__btn-search svg {
+	fill: #ffdf00;
+}
+.talash button.search-bar__btn-search path {
+	stroke: #ffdf00;
+}
+.talash button.search-bar__btn-search:hover svg {
 	fill: #000000;
 }
-.talash form .search-bar button.search-bar__btn-search:hover path {
+.talash button.search-bar__btn-search:hover path {
 	stroke: #000000;
 }
 

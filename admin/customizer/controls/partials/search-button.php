@@ -24,30 +24,29 @@ function search_button($wp_customize) {
 	) );
 	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'talash_button_icon_color', 
 		array(
-			'label'      => __( 'Button Icon Color', 'talash' ),
+			'label'      => __( 'Icon Color', 'talash' ),
 			'section'    => 'talash_section',
 			'settings'   => 'talash_button_icon_color',
 			'priority'   => 2
 		) 
 	) );
-
-	$wp_customize->add_setting( 'talash_dropdown_button_icon_color', array(
+	$wp_customize->add_setting( 'talash_button_icon_hover_color', array(
 		'default' 			=> '#000000',
 		'capability'    	=> 'edit_theme_options',
 		'sanitize_callback' => 'sanitize_hex_color',
 		'transport' 		=> 'postMessage'
 	) );
-	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'talash_dropdown_button_icon_color', 
+	$wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'talash_button_icon_hover_color', 
 		array(
-			'label'      => __( 'Dropdown Button Icon Color', 'talash' ),
+			'label'      => __( 'Icon Hover Color', 'talash' ),
 			'section'    => 'talash_section',
-			'settings'   => 'talash_dropdown_button_icon_color',
+			'settings'   => 'talash_button_icon_hover_color',
 			'priority'   => 2
 		) 
 	) );
 
 	$wp_customize->add_setting( 'talash_button_background_color', array(
-		'default' 			=> '#fff',
+		'default' 			=> '#ffffff',
 		'capability'    	=> 'edit_theme_options',
 		'sanitize_callback' => 'sanitize_hex_color',
 		'transport' 		=> 'postMessage'

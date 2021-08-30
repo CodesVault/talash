@@ -39,11 +39,13 @@
         }
 	);
 	talash_wp_customize(
-		'talash_dropdown_button_icon_color',
+		'talash_button_icon_hover_color',
 		function( newval ) {
-			$('.search-bar.unfold button.search-bar__btn-search svg').css('fill', newval );
-			$('.search-bar.unfold button.search-bar__btn-search path').css('stroke', newval );
-        }
+			$('.talash button.search-bar__btn-search').hover(function() {
+				$('button.search-bar__btn-search svg').css('fill', newval );
+				$('button.search-bar__btn-search path').css('stroke', newval );
+			});
+		}
 	);
 
 	talash_wp_customize(
@@ -65,7 +67,7 @@
 	talash_wp_customize(
 		'talash_dropdown_button_background_color',
 		function( newval ) {
-			$('.talash form .search-bar.unfold button.search-bar__btn-search').css('background-color', newval );
+			$('.talash .search-bar.unfold button.search-bar__btn-search').css('background-color', newval );
         }
 	);
 

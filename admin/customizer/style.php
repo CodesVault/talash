@@ -35,20 +35,20 @@ function talash_customizer_style() {
 		}
 
 		/* === search button === */
+		button.search-bar__btn-search:hover svg {
+			fill: <?php echo esc_html( get_theme_mod( 'talash_button_icon_hover_color', '' ) ); ?>;
+		}
+		button.search-bar__btn-search:hover path {
+			stroke: <?php echo esc_html( get_theme_mod( 'talash_button_icon_hover_color', '' ) ); ?>;
+		}
 		button.search-bar__btn-search svg {
 			fill: <?php echo esc_html( get_theme_mod( 'talash_button_icon_color', '' ) ); ?>;
 		}
 		button.search-bar__btn-search path {
 			stroke: <?php echo esc_html( get_theme_mod( 'talash_button_icon_color', '' ) ); ?>;
 		}
-		.search-bar.unfold button.search-bar__btn-search svg {
-			fill: <?php echo esc_html( get_theme_mod( 'talash_dropdown_button_icon_color', '' ) ); ?>;
-		}
-		.search-bar.unfold button.search-bar__btn-search path {
-			stroke: <?php echo esc_html( get_theme_mod( 'talash_dropdown_button_icon_color', '' ) ); ?>;
-		}
 
-		.searctalashhify form .search-bar button.search-bar__btn-search {
+		.talash form .search-bar button.search-bar__btn-search {
 			background-color: <?php echo esc_html( get_theme_mod( 'talash_button_background_color', '' ) ); ?>;
 		}
 		.talash form .search-bar.unfold button.search-bar__btn-search {
