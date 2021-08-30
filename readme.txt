@@ -40,6 +40,9 @@ Yes, It supports ShortCode.
 
 == Changelog ==
 
+= 1.0.0 - 30-08-2021 =
+- New: Sanitization, validation, Escaping bug fix.
+
 = 0.0.9 - 26-08-2021 =
 - New: Sanitization, validation
 
@@ -47,6 +50,8 @@ Yes, It supports ShortCode.
 - New: Initial release
 
 == Upgrade Notice ==
+1.0.0 - Review bug fixing.
+
 0.0.9 - Review fixing.
 
 0.0.7 - Initial Realease of Searchify.
