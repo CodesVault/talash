@@ -97,11 +97,10 @@ class Template_Markup {
 			?>
 			<div class="talash-card">
 				<?php
+				$thumbnail_image_url = TALASH_URL . 'assets/images/talash-placeholder.png';
 				if ( has_post_thumbnail( $post->ID ) ) {
 					$thumbnail = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'thumbnail' );
 					$thumbnail_image_url = $thumbnail[0];
-				} else {
-					$thumbnail_image_url = TALASH_URL . 'assets/images/talash-placeholder.png';
 				}
 				?>
 				<div class="talash-thumbnail-wrap">

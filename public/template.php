@@ -53,7 +53,7 @@
 			<div class="talash-inner-popup" id="postType-popup">
 				<div class="talash-loader" id="postType-loader"><div></div></div>
 				<div class="talash-popup__input-close" id="postType-close">
-					<a talash-tooltip="<?php echo esc_attr( 'Close', 'talash' ); ?>"><?php echo esc_html( 'x' ); ?></a>
+					<a talash-tooltip="<?php echo esc_attr__( 'Close', 'talash' ); ?>"><?php echo esc_html( 'x' ); ?></a>
 				</div>
 				<div id="postType-popup__input" class="talash-popup__input"></div>
 			</div>
