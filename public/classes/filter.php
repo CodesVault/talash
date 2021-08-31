@@ -11,7 +11,7 @@ namespace Talash\View;
 
 
 class Filter {
-	
+
 	private $result = [];
 
 	public static function check_validation($data) {
@@ -87,9 +87,30 @@ class Filter {
 
 	public static function data_sanitization($data, $options) {
 		$args = [];
+		
 		foreach ( $options as $option ) {
-			$args[$option] = FILTER_SANITIZE_STRING;
+			if ( $option == 'talashKey' ) {
+				$args[$option] = FILTER_SANITIZE_STRING;
+			} elseif ( $option == 'postType' || $option == 'dateRangeStart' || $option == 'dateRangeEnd' ) {
+				explode( ', ', $data->$option );
+				$args[$option] = [
+					'filter' => FILTER_SANITIZE_STRING,
+        			'flags'  => FILTER_FORCE_ARRAY,
+				];
+			} elseif ( $option == 'catID' || $option == 'authorID' ) {
+				explode( ', ', $data->$option );
+				$args[$option] = [
+					'filter' => FILTER_VALIDATE_INT,
+        			'flags'  => FILTER_FORCE_ARRAY,
+				];
+			}
 		}
-		return (object)filter_var_array( $data,  $args);
+
+		$newData = [];
+		$sanitized_data = filter_var_array( $data,  $args);
+		foreach ( $sanitized_data as $key => $sd ) {
+			$newData[$key] = $sd != '' ? implode( ', ', $sd ) : '';
+		}
+		return (object)$newData;
 	}
 }
