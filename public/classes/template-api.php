@@ -55,6 +55,7 @@ class Template_Api {
 		}
 
 		Template_Markup::postType_markup($post_type);
+		// wp_send_json($search_data);
 		wp_die();
 	}
 

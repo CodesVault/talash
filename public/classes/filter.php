@@ -9,48 +9,38 @@
  */
 namespace Talash\View;
 
-use Talash\Facade\Facade;
 
-class Filter extends Facade {
-	private static $self;
-    
-    protected static function getInstance()
-    {
-        if (static::$self === null) {
-            static::$self = new Filter;
-        }
-
-        return static::$self;
-    }
-
+class Filter {
+	
 	private $result = [];
 
-	protected function check_validation($data) {
+	public static function check_validation($data) {
 		if ( ! is_object( $data ) ) return false;
 
+		$self = new self;
 		foreach ( $data as $key => $input_data ) {
 			if ( $input_data === null || ! is_string( $input_data ) ) {
 				return false;
 			}
 
 			if ( $key == 'talashKey' || $key == 'postType' ) {
-				$this->string_check( $input_data, $key );
-				if ( ! $this->result ) return false;
+				$self->string_check( $input_data, $key );
+				if ( ! $self->result ) return false;
 			}
 			if ( $key == 'catID' || $key == 'authorID' ) {
-				$this->number_check( $input_data, $key );
-				if ( ! $this->result ) return false;
+				$self->number_check( $input_data, $key );
+				if ( ! $self->result ) return false;
 			} 
 			if ( $key == 'dateRangeStart' || $key == 'dateRangeEnd' ) {
-				$this->date_check( $input_data, $key );
-				if ( ! $this->result ) return false;
+				$self->date_check( $input_data, $key );
+				if ( ! $self->result ) return false;
 			}
 		}
 
-		if ( empty( $this->result ) ) {
+		if ( empty( $self->result ) ) {
 			return false;
 		}
-		return (object)$this->result;
+		return (object)$self->result;
 	}
 
 	private function string_check($string, $key) {
@@ -95,7 +85,7 @@ class Filter extends Facade {
 		return $this->result[$key] = $date;
 	}
 
-	protected function data_sanitization($data, $options) {
+	public static function data_sanitization($data, $options) {
 		$args = [];
 		foreach ( $options as $option ) {
 			$args[$option] = FILTER_SANITIZE_STRING;
