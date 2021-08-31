@@ -9,12 +9,23 @@
  */
 namespace Talash\View;
 
+use Talash\Facade\Facade;
 
-class Filter {
+class Filter extends Facade {
+	private static $self;
+    
+    protected static function getInstance()
+    {
+        if (static::$self === null) {
+            static::$self = new Filter;
+        }
 
-	private static $result = [];
+        return static::$self;
+    }
 
-	public static function check_validation($data) {
+	private $result = [];
+
+	protected function check_validation($data) {
 		if ( ! is_object( $data ) ) return false;
 
 		foreach ( $data as $key => $input_data ) {
@@ -23,68 +34,68 @@ class Filter {
 			}
 
 			if ( $key == 'talashKey' || $key == 'postType' ) {
-				self::string_check( $input_data, $key );
-				if ( ! self::$result ) return false;
+				$this->string_check( $input_data, $key );
+				if ( ! $this->result ) return false;
 			}
 			if ( $key == 'catID' || $key == 'authorID' ) {
-				self::number_check( $input_data, $key );
-				if ( ! self::$result ) return false;
+				$this->number_check( $input_data, $key );
+				if ( ! $this->result ) return false;
 			} 
 			if ( $key == 'dateRangeStart' || $key == 'dateRangeEnd' ) {
-				self::date_check( $input_data, $key );
-				if ( ! self::$result ) return false;
+				$this->date_check( $input_data, $key );
+				if ( ! $this->result ) return false;
 			}
 		}
 
-		if ( empty( self::$result ) ) {
+		if ( empty( $this->result ) ) {
 			return false;
 		}
-		return (object)self::$result;
+		return (object)$this->result;
 	}
 
-	private static function string_check($string, $key) {
+	private function string_check($string, $key) {
 		if ( $string != '' ) {
 			if ( $key == 'postType' ) {
 				$string_arr = [];
 				$strings = explode( ', ', $string );
 	
 				foreach ( $strings as $str ) {
-					if ( ! is_string($str) ) return self::$result = false;
+					if ( ! is_string($str) ) return $this->result = false;
 					array_push( $string_arr, $str );
 				}
-				return self::$result[$key] = implode( ', ', $string_arr );
-			} else return self::$result[$key] = $string;
-		} else self::$result[$key] = '';
+				return $this->result[$key] = implode( ', ', $string_arr );
+			} else return $this->result[$key] = $string;
+		} else $this->result[$key] = '';
 	}
 
-	private static function number_check($number, $key) {
+	private function number_check($number, $key) {
 		if ( $number != '' ) {
 			$arr_ids = [];
 			$ids = explode(', ', $number);
 			foreach ( $ids as $id ) {
-				if ( ! intval($id) ) return self::$result = false;
+				if ( ! intval($id) ) return $this->result = false;
 				array_push($arr_ids, intval($id));
 			}
-			return self::$result[$key] = implode( ', ', $arr_ids );
-		} else self::$result[$key] = '';
+			return $this->result[$key] = implode( ', ', $arr_ids );
+		} else $this->result[$key] = '';
 	}
 
-	private static function date_validator($date) {
-		$format = 'Y-m-d H:i:s';
+	private function date_validator($date) {
+		$format = 'Y-m-j H:i:s';
 
 		$d = \DateTime::createFromFormat($format, $date);
     	return $d && $d->format($format) == $date;
 	}
 
-	private static function date_check($date, $key) {
-		if ( ! self::date_validator( $date ) ) {
-			return self::$result = false;
+	private function date_check($date, $key) {
+		if ( ! $this->date_validator( $date ) ) {
+			return $this->result = false;
 		}
 
-		return self::$result[$key] = $date;
+		return $this->result[$key] = $date;
 	}
 
-	public static function data_sanitization($data, $options) {
+	protected function data_sanitization($data, $options) {
 		$args = [];
 		foreach ( $options as $option ) {
 			$args[$option] = FILTER_SANITIZE_STRING;
