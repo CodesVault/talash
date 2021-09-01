@@ -46,19 +46,6 @@ class Talash_Core {
 		require_once TALASH_DIR_PATH . 'inc/Query-builder.php';
 		require_once TALASH_DIR_PATH . 'admin/talash-admin.php';
 		require_once TALASH_DIR_PATH . 'public/classes/talash-public.php';
-
-		$result = Query_builder::select("posts.post_title, posts.post_status", true)
-					->from("posts as posts")	// table prefix added automatically. 
-					->join("term_relationships as term_rel")
-					->on("posts.ID = term_rel.object_id")
-					->where("term_rel.term_taxonomy_id = %s")
-					->or("term_rel.term_taxonomy_id = %s")
-					->and("posts.post_status = %s")
-					->orderBy("post_title desc")
-					->get([3, 6, 'publish']);
-					// ::groupBy("post_title")
-
-		// print_r($result);
 	}
 
 }
