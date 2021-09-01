@@ -16,3 +16,4 @@ composer.json
 composer.lock
 
 assets/src
+dist
