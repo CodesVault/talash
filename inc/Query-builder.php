@@ -80,6 +80,12 @@ class Query_builder {
 		return $this;
 	}
 
+	public function between($between) {
+		$query = static::$query_string;
+		static::$query_string = "{$query} between {$between}";
+		return $this;
+	}
+
 	public function or($condition) {
 		$query = static::$query_string;
 		static::$query_string = "{$query} OR {$condition}";
