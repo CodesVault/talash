@@ -124,7 +124,6 @@ class Template_Api {
 		$data = Talash_Query::talash_search_query($data);
 		Template_Markup::search_result_markup($data);
 
-		// wp_send_json( $search_data );
 		wp_die();
 	}
 
