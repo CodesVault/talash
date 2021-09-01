@@ -43,7 +43,6 @@ class Talash_Core {
 	}
 
 	function load_dependencies() {
-		require_once TALASH_DIR_PATH . 'inc/Facade.php';
 		require_once TALASH_DIR_PATH . 'inc/Query-builder.php';
 		require_once TALASH_DIR_PATH . 'admin/talash-admin.php';
 		require_once TALASH_DIR_PATH . 'public/classes/talash-public.php';
