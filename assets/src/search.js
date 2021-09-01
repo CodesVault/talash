@@ -27,9 +27,13 @@ function validation() {
 	const postType = document.querySelector('#postType-data')
 	const catID = document.querySelector('#cat-data')
 	const authorID = document.querySelector('#author-data')
+	const searchResult = document.querySelector('.talash-result')
 
 	if (searchInput.value == '') {
 		if (postType.value == '' && catID.value == '' && authorID.value == '') {
+			if (searchResult.classList.contains('show')) {
+				searchResult.classList.remove('show')
+			}
 			return false;
 		}
 	}

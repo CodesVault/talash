@@ -133,10 +133,10 @@
 }
 
 .talash button.search-bar__btn-search svg {
-	fill: #ffdf00;
+	fill: #4fbd86;
 }
 .talash button.search-bar__btn-search path {
-	stroke: #ffdf00;
+	stroke: #4fbd86;
 }
 .talash button.search-bar__btn-search:hover svg {
 	fill: #000000;

@@ -11,7 +11,6 @@ namespace Talash;
 
 use Talash\View\Talash_Public;
 use Talash\Admin\Talash_Admin;
-use Talash\Query\Query_builder;
 
 class Talash_Core {
 
