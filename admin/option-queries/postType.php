@@ -9,15 +9,10 @@
  */
 namespace Talash\Admin;
 
+use Talash\Query\Query_builder;
+
 
 class PostType_Query {
-
-	private static function talash_query($query, $arr) {
-		global $wpdb;
-	
-		$results = $wpdb->get_results( $wpdb->prepare( $query, $arr ) );
-		return $results;
-	}
 
 	private static function allowed_postTypes($type = 'names') {
 		$args = [
@@ -43,18 +38,17 @@ class PostType_Query {
 	}
 
 	public static function get_postTypes_by_cat($search_data) {
-		global $wpdb;
 		$data = [];
 		
-		$postTypes = self::talash_query(
-			"SELECT DISTINCT posts.post_type
-			FROM {$wpdb->prefix}posts posts
-			INNER JOIN {$wpdb->prefix}term_relationships term_rel
-				ON posts.ID = term_rel.object_id
-			WHERE term_rel.term_taxonomy_id = %s
-				AND	posts.post_status = %s",
-			[ $search_data->catID, 'publish' ]
-		);
+		$postTypes = Query_builder::select("posts.post_type", true)
+			->from("posts as posts")
+			->join("term_relationships as term_rel")
+			->on("posts.ID = term_rel.object_id")
+			->where("term_rel.term_taxonomy_id")
+			->in($search_data->catID)
+			->and("posts.post_status = %s")
+			->get([ 'publish' ]);
+
 		if ( is_wp_error( $postTypes ) ) {
 			return null;
 		}
@@ -71,22 +65,22 @@ class PostType_Query {
 	}
 
 	public static function get_postTypes_by_author($search_data) {
-		global $wpdb;
 		$data = [];
 		
-		$postTypes = self::talash_query(
-			"SELECT DISTINCT posts.post_type
-			FROM {$wpdb->prefix}posts posts
-			WHERE posts.post_author = %s
-				AND	posts.post_status = %s",
-			[ $search_data->authorID, 'publish' ]
-		);
+		$postTypes = Query_builder::select("posts.post_type", true)
+			->from("posts as posts")
+			->join("term_relationships as term_rel")
+			->on("posts.ID = term_rel.object_id")
+			->where("posts.post_author")
+			->in($search_data->authorID)
+			->and("posts.post_status = %s")
+			->get([ 'publish' ]);
+			
 		if ( is_wp_error( $postTypes ) ) {
 			return null;
 		}
 		
 		$all_post_types = self::allowed_postTypes('objects');
-
 		for ($i = 0; $i < count($all_post_types); $i++) {
 			if ( is_object( $all_post_types[$postTypes[$i]->post_type] ) ) {
 				array_push( $data, $all_post_types[$postTypes[$i]->post_type]->name );
@@ -97,25 +91,24 @@ class PostType_Query {
 	}
 
 	public static function get_postTypes_by_cat_author($search_data) {
-		global $wpdb;
 		$data = [];
 
-		$postTypes = self::talash_query(
-			"SELECT DISTINCT posts.post_type
-			FROM {$wpdb->prefix}posts posts
-			INNER JOIN {$wpdb->prefix}term_relationships term_rel
-				ON posts.ID = term_rel.object_id
-			WHERE posts.post_author = %s
-				AND term_rel.term_taxonomy_id = %s
-				AND	posts.post_status = %s",
-			[ $search_data->authorID, $search_data->catID, 'publish' ]
-		);
+		$postTypes = Query_builder::select("posts.post_type", true)
+			->from("posts as posts")
+			->join("term_relationships as term_rel")
+			->on("posts.ID = term_rel.object_id")
+			->where("posts.post_author")
+			->in($search_data->authorID)
+			->and("term_rel.term_taxonomy_id")
+			->in($search_data->catID)
+			->and("posts.post_status = %s")
+			->get([ 'publish' ]);
+
 		if ( is_wp_error( $postTypes ) ) {
 			return null;
 		}
 		
 		$all_post_types = self::allowed_postTypes('objects');
-
 		for ($i = 0; $i < count($all_post_types); $i++) {
 			if ( is_object( $all_post_types[$postTypes[$i]->post_type] ) ) {
 				array_push( $data, $all_post_types[$postTypes[$i]->post_type]->name );

@@ -38,8 +38,8 @@ class Template_Api {
         }
 
 		$post_type = null;
-		$search_data = json_decode( stripslashes( $_POST['talash_data'] ), true );
-		$search_data = Filter::data_sanitization( $search_data, ['catID', 'authorID'] );
+		$search_data = json_decode( stripslashes( $_POST['talash_data'] ) );
+		$search_data = Filter::data_sanitization( $search_data );
 		$search_data = Filter::check_validation($search_data);
 		
 		if ( $search_data ) {
@@ -55,7 +55,6 @@ class Template_Api {
 		}
 
 		Template_Markup::postType_markup($post_type);
-		// wp_send_json($search_data);
 		wp_die();
 	}
 
@@ -66,12 +65,11 @@ class Template_Api {
         }
 
 		$cats = null;
-		$search_data = json_decode( stripslashes( $_POST['talash_data'] ), true );
-		$search_data = Filter::data_sanitization( $search_data, ['postType', 'authorID'] );
+		$search_data = json_decode( stripslashes( $_POST['talash_data'] ) );
+		$search_data = Filter::data_sanitization( $search_data );
 		$search_data = Filter::check_validation($search_data);
 		
 		if ( $search_data ) {
-			$search_data = (object)$search_data;
 			if ( $search_data->postType !== '' && $search_data->authorID === '' ) {
 				$cats = Category_Query::get_cats_by_postTypes($search_data);
 			} elseif ( $search_data->postType === '' && $search_data->authorID !== '' ) {
@@ -94,12 +92,11 @@ class Template_Api {
         }
 
 		$authors = null;
-		$search_data = json_decode( stripslashes( $_POST['talash_data'] ), true );
-		$search_data = Filter::data_sanitization( $search_data, ['postType', 'catID'] );
+		$search_data = json_decode( stripslashes( $_POST['talash_data'] ) );
+		$search_data = Filter::data_sanitization( $search_data );
 		$search_data = Filter::check_validation($search_data);
 		
 		if ( $search_data ) {
-			$search_data = (object)$search_data;
 			if ( empty( $search_data->postType ) && empty( $search_data->catID ) ) {
 				$authors = Author_Query::talash_get_all_author();
 			} elseif ( ! empty( $search_data->postType ) && ! empty( $search_data->catID ) ) {
@@ -120,11 +117,8 @@ class Template_Api {
         if ( false == $security ) {
             return;
         }
-		$search_data = json_decode( stripslashes( $_POST['talash_data'] ), true );
-		$search_data = Filter::data_sanitization(
-			$search_data,
-			['talashKey', 'postType', 'catID', 'dateRangeStart', 'dateRangeEnd', 'authorID']
-		);
+		$search_data = json_decode( stripslashes( $_POST['talash_data'] ) );
+		$search_data = Filter::data_sanitization( $search_data );
 		$data = Filter::check_validation($search_data);
 		
 		$data = Talash_Query::talash_search_query($data);

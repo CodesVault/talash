@@ -14,6 +14,26 @@ class Filter {
 
 	private $result = [];
 
+	public static function data_sanitization($data) {
+		if ( ! is_object( $data ) ) return false;
+
+		$sanitized_data = [];
+		foreach ( $data as $key => $item ) {
+			$item = sanitize_text_field( $item );
+			if ( $item ) {
+				if ( $key === 'catID' || $key === 'authorID' ) {
+					$sanitized_data[$key] = self::number_sanitization($item);
+				} elseif ( $key === 'talashKey' || $key === 'postType' || $key === 'dateRangeStart' || $key === 'dateRangeEnd' ) {
+					$sanitized_data[$key] = self::string_sanitization($item);
+				} else return $sanitized_data = false;
+			} else {
+				$sanitized_data[$key] = '';
+			}
+		}
+
+		return (object)$sanitized_data;
+	}
+
 	public static function check_validation($data) {
 		if ( ! is_object( $data ) ) return false;
 
@@ -41,6 +61,26 @@ class Filter {
 			return false;
 		}
 		return (object)$self->result;
+	}
+
+	private static function number_sanitization($data) {
+		$data = explode( ', ', $data );
+		$arr = [];
+
+		foreach ( $data as $elm ) {
+			array_push( $arr, filter_var( $elm, FILTER_SANITIZE_NUMBER_INT ) );
+		}
+		return implode( ', ', $arr );
+	}
+
+	private static function string_sanitization($data) {
+		$data = explode( ', ', $data );
+		$arr = [];
+
+		foreach ( $data as $elm ) {
+			array_push( $arr, filter_var( $elm, FILTER_SANITIZE_STRING ) );
+		}
+		return implode( ', ', $arr );
 	}
 
 	private function string_check($string, $key) {
@@ -85,32 +125,4 @@ class Filter {
 		return $this->result[$key] = $date;
 	}
 
-	public static function data_sanitization($data, $options) {
-		$args = [];
-		
-		foreach ( $options as $option ) {
-			if ( $option == 'talashKey' ) {
-				$args[$option] = FILTER_SANITIZE_STRING;
-			} elseif ( $option == 'postType' || $option == 'dateRangeStart' || $option == 'dateRangeEnd' ) {
-				explode( ', ', $data->$option );
-				$args[$option] = [
-					'filter' => FILTER_SANITIZE_STRING,
-        			'flags'  => FILTER_FORCE_ARRAY,
-				];
-			} elseif ( $option == 'catID' || $option == 'authorID' ) {
-				explode( ', ', $data->$option );
-				$args[$option] = [
-					'filter' => FILTER_VALIDATE_INT,
-        			'flags'  => FILTER_FORCE_ARRAY,
-				];
-			}
-		}
-
-		$newData = [];
-		$sanitized_data = filter_var_array( $data,  $args);
-		foreach ( $sanitized_data as $key => $sd ) {
-			$newData[$key] = $sd != '' ? implode( ', ', $sd ) : '';
-		}
-		return (object)$newData;
-	}
 }

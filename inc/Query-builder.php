@@ -74,6 +74,12 @@ class Query_builder {
 		return $this;
 	}
 
+	public function in($in) {
+		$query = static::$query_string;
+		static::$query_string = "{$query} IN({$in})";
+		return $this;
+	}
+
 	public function or($condition) {
 		$query = static::$query_string;
 		static::$query_string = "{$query} OR {$condition}";
