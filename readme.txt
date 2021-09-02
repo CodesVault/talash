@@ -1,6 +1,6 @@
 === Talash ===
 Plugin Name: Talash
-Version: 1.1.0
+Version: 1.1.1
 Author: sourav926
 Author URI: https://abmsourav.com/
 Contributors: sourav926
@@ -8,7 +8,7 @@ Tags: search, advanced-search, shortCode, post, cpt
 Requires at least: 4.9
 Tested up to: 5.8
 Requires PHP: 5.6
-Stable tag: 1.1.0
+Stable tag: 1.1.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -17,6 +17,9 @@ Talash is an advanced search plugin for WordPress. Next Level of WordPress searc
 == Description ==
 Search any types of WordPress posts using Talash including Post, WooCommerce Product, Custom Post Type, etc.
 Talash search contents for you without page reload. You will get search results by AJAX call, which will give you a better experience and also saves time of users by removing page reload. You'll get modern design which is inspired by Google Search.
+
+## How to use the plugin?
+Install the plugin then `[talash-search]` paste this shortCode in the editor and save.
 
 ## LOOKING FOR YOUR FEEDBACK
 I’m looking for your suggestion and feedback on how I can help you in a better way.
@@ -39,6 +42,11 @@ Yes, It supports ShortCode.
 1. talash-placeholder.png. Licensed under CC0
 
 == Changelog ==
+
+= 1.1.1 - 02-09-2021 =
+- New: Documentation updated.
+- New: Doc slider images added.
+- New: Plugin logo, banner added.
 
 = 1.1.0 - 02-09-2021 =
 - New: Query Builder added.
