@@ -19,7 +19,7 @@ Search any types of WordPress posts using Talash including Post, WooCommerce Pro
 Talash search contents for you without page reload. You will get search results by AJAX call, which will give you a better experience and also saves time of users by removing page reload. You'll get modern design which is inspired by Google Search.
 
 ## How to use the plugin?
-Install the plugin then `[talash-search]` paste this shortCode in the editor and save.
+Install the plugin then paste this shortCode `[talash-search]` in the editor and save.
 
 ## LOOKING FOR YOUR FEEDBACK
 I’m looking for your suggestion and feedback on how I can help you in a better way.
