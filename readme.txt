@@ -39,7 +39,16 @@ Yes, It supports ShortCode.
 * Date Range Picker. Licensed under the MIT license.
 
 == Screenshots ==
-1. talash-placeholder.png. Licensed under CC0
+
+1. Search bar on the frontend.
+2. Add shortCode in the editor.
+3. Advanced options.
+4. Options for post type and multi-select.
+5. Options for category.
+6. Date picker.
+7. Options for Author selection.
+8. Search Result based on selected options.
+9. Search Result based on Key word and selected opinions.
 
 == Changelog ==
 
