@@ -167,11 +167,13 @@
 	box-shadow: 2px 8px 10px rgba(0, 0, 0, 0.2);
 	transform: translate(0, 48px);
     visibility: hidden;
-	transition: all .15s ease-in-out;
+	opacity: 0;
+	transition: transform .15s ease-in-out;
 }
 .talash-advanced.show {
 	transform: translate(0, 45px);
     visibility: visible;
+	opacity: 1;
 }
 
 .talash-advanced__inner {
@@ -294,7 +296,10 @@
 	position: relative;
 }
 .talash-popup__input-close a {
+	font-family: Arial, Helvetica, sans-serif;
 	font-size: 18px;
+	cursor: pointer;
+	text-decoration: none;
     position: fixed;
     right: 8px;
     top: 5px;
@@ -391,21 +396,23 @@
     position: absolute;
 	z-index: 99999;
     background-color: #fff;
-    width: 40vw;
+	width: 135%;
 	height: 40vh;
     padding: 0 5px;
     margin: 0;
 	border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
 	box-shadow: 2px 10px 10px rgba(0, 0, 0, 0.2);
-	transform: translate(0, 45px);
+	transform: translate(0, 48px);
     visibility: hidden;
 	overflow: hidden;
-	transition: all .15s ease-in-out;
+	opacity: 0;
+	transition: transform .15s ease-in-out;
 }
 .talash-result.show {
 	transform: translate(0, 45.65px);
     visibility: visible;
+	opacity: 1;
 }
 
 .talash-search-by {
@@ -427,9 +434,12 @@
 	justify-content: flex-end;
 }
 .talash-result-close a {
+	font-family: Arial, Helvetica, sans-serif;
 	font-size: 18px;
 	color: #9e9e9e;
 	padding: 0 5px;
+	cursor: pointer;
+	text-decoration: none;
 }
 
 .talash-result__inner {
@@ -461,9 +471,10 @@
 	display: flex;
 	flex-direction: column;
 }
-h2.talash-title {
+.talash-card h2.talash-title {
 	font-size: 18px;
-	margin-top: 8px;
+	font-weight: 550;
+	margin: 8px 0 0;
 }
 h2.talash-title a {
 	text-decoration: none;
@@ -516,6 +527,7 @@ a.talash-reset {
     padding: 10px;
     right: 8px;
     bottom: 8px;
+	text-decoration: none;
 }
 a.talash-reset:hover {
     color: #808080;
@@ -579,6 +591,9 @@ a.talash-reset:hover {
 	.talash-thumbnail-wrap {
 		display: flex;
 		justify-content: center;
+	}
+	.talash-thumbnail {
+		margin-right: 0;
 	}
 	.talash-card__inner {
 		flex-direction: column-reverse;
