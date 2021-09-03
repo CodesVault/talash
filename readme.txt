@@ -1,6 +1,6 @@
 === Talash ===
 Plugin Name: Talash
-Version: 1.1.2
+Version: 1.1.4
 Author: sourav926
 Author URI: https://abmsourav.com/
 Contributors: sourav926
@@ -8,7 +8,7 @@ Tags: search, advanced-search, shortCode, post, cpt
 Requires at least: 4.9
 Tested up to: 5.8
 Requires PHP: 5.6
-Stable tag: 1.1.2
+Stable tag: 1.1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -52,6 +52,12 @@ Yes, It supports ShortCode.
 
 == Changelog ==
 
+= 1.1.4 - 03-09-2021 =
+- Fix: Style issues fix.
+
+= 1.1.2 - 02-09-2021 =
+- Fix: Slider images added for org doc.
+
 = 1.1.1 - 02-09-2021 =
 - New: Documentation updated.
 - New: Doc slider images added.
@@ -71,6 +77,10 @@ Yes, It supports ShortCode.
 - New: Initial release
 
 == Upgrade Notice ==
+1.1.4 - Style issues fix.
+
+1.1.2 - Minor fixing.
+
 1.1.0 - Sanitization bug fixing.
 
 1.0.0 - Review bug fixing.

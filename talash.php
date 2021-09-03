@@ -3,7 +3,7 @@
  * Plugin Name:       Talash
  * Plugin URI:        https://wordpress.org/plugins/talash
  * Description:       Advanced Search plugin for WordPress. Next Level of WordPress search experience. <code>[talash-search]</code> use this shorCode to show the <strong>Talash Search Bar</strong>. You can customize the UI from customizer.
- * Version:           1.1.2
+ * Version:           1.1.4
  * Author:            Keramot UL Islam 
  * Author URI:        https://abmsourav.com/
  * License:           GPL-2.0+
@@ -15,7 +15,7 @@ use Talash\Talash_Core;
 
 if ( ! defined( 'ABSPATH' ) ) die;
 
-define( 'TALASH_VERSION', '1.1.2' );
+define( 'TALASH_VERSION', '1.1.4' );
 define( 'TALASH_URL', plugins_url( '/', __FILE__ ) );
 define( 'TALASH_DIR_PATH', plugin_dir_path( __FILE__ ) );
 define( 'TALASH_ENV_DEV', false );
