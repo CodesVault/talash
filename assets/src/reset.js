@@ -19,18 +19,21 @@ function reset(optionReset = false, postTypeReset = true, catReset = true, autho
 			postTypeInput.innerHTML = ''
 			postTypeData.value = ''
 			postTypeLabel.textContent = postTypeLabel.getAttribute('data-label')
+			postTypeLabel.hasAttribute('talash-tooltip') ? postTypeLabel.removeAttribute('talash-tooltip') : ''
 		}
 		
 		if (catReset) {
 			catPopupInput.innerHTML = ''
 			catData.value = ''
 			catLabel.textContent = catLabel.getAttribute('data-label')
+			catLabel.hasAttribute('talash-tooltip') ? catLabel.removeAttribute('talash-tooltip') : ''
 		}
 
 		if (authorReset) {
 			authorPopupInput.innerHTML = ''
 			authorData.value = ''
 			authorLabel.textContent = authorLabel.getAttribute('data-label')
+			authorLabel.hasAttribute('talash-tooltip') ? authorLabel.removeAttribute('talash-tooltip') : ''
 		}
 
 		resetState()

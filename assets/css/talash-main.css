@@ -19,10 +19,12 @@
     visibility: hidden;
 }
 [talash-tooltip]:after {
+	font-family: Arial, Helvetica, sans-serif;
 	content: attr(talash-tooltip);
 	left: 5px;
 }
 [talash-search-tooltip]:after {
+	font-family: Arial, Helvetica, sans-serif;
 	content: attr(talash-search-tooltip);
 	right: 5px;
 }
@@ -97,6 +99,8 @@
 }
 
 .search-bar__clear-input {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
 	display: none;
 	position: absolute;
 	right: 0;
