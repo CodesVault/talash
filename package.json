@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack ./assets/src/main.js --output-filename=../assets/js/talash-main.min.js --mode=production",
-	"dev": "webpack watch ./assets/src/main.js --output-filename=../assets/js/talash-main.js --mode=development"
+    "dev": "webpack watch ./assets/src/main.js --output-filename=../assets/js/talash-main.js --mode=development"
   },
   "repository": {
     "type": "git",
