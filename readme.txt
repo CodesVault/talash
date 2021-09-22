@@ -1,6 +1,6 @@
 === Talash ===
 Plugin Name: Talash
-Version: 1.1.5
+Version: 1.1.6
 Author: sourav926
 Author URI: https://abmsourav.com/
 Contributors: sourav926
@@ -52,11 +52,11 @@ You'll get search results without page reloading.
 
 == Changelog ==
 
-= 1.1.5 - 08-09-2021 =
-- Fix: Tooltip reset issue fix.
-- Fix: input field clear icon font fix.
-- Fix: Tooltip font family.
+= 1.1.6 - 22-09-2021 =
+- Fix: Not found heading font size added.
+- Fix: Popup height added in px.
+- Fix: Search by log space issue fixed.
 
 == Upgrade Notice ==
 
-1.1.5 - Frontend issues fix.
+1.1.6 - Some Frontend issues fix.

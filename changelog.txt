@@ -1,5 +1,10 @@
 == Changelog ==
 
+= 1.1.6 - 22-09-2021 =
+- Fix: Not found heading font size added.
+- Fix: Popup height added in px.
+- Fix: Search by log space issue fixed.
+
 = 1.1.5 - 08-09-2021 =
 - Fix: Tooltip reset issue fix.
 - Fix: input field clear icon font fix.
