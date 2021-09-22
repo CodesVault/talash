@@ -6,6 +6,7 @@
 circle.yml
 .DS_Store
 .phpcs-log.txt
+.github
 
 README.md
 package.json
