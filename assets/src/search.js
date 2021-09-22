@@ -52,6 +52,7 @@ function searchByLog(data) {
 
 	searchByData += searchInput.value && data.postType ? '; ' : ''
 	searchByData += data.postType ? postTypeLabel.getAttribute('data-label') + ': ' + data.postType : ''
+	searchByData += data.authorID && data.postType ? '; ' : ''
 
 	searchByData += data.postType && data.catID ? '; ' : ''
 	searchByData +=  data.catID ? catLabel.getAttribute('data-label') + ': ' + catLabel.textContent : ''
