@@ -295,6 +295,9 @@
 	grid-template-columns: 1fr 1fr 1fr;
 	width: 100%;
 }
+.talash-popup__input.show h2.talash-title {
+	font-size: 18px;
+}
 
 .talash-popup__input-close {
 	position: relative;
