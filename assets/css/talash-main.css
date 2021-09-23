@@ -197,14 +197,18 @@
 	display: flex;
 	cursor: pointer;
 	border-radius: 5px;
-	box-shadow: 1px 1.5px 5px rgba(0, 0, 0, 0.3);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, .2);;
 	padding: 5px 10px;
 	position: relative;
+	transition: all .3s;
+	border: 1px solid transparent;
 }
 .post-type-list:hover,
 .category-list:hover,
 .author-list:hover {
-	box-shadow: 3px 2px 20px rgba(0, 0, 0, 0.2);
+	/*box-shadow: 3px 2px 20px rgba(0, 0, 0, 0.2);*/
+	box-shadow: 0px 8px 24px rgba(149, 157, 165, 0.2) ;
+	border: 1px solid rgba(208, 204, 204, 0.3);
 }
 
 .post-type-li,
@@ -214,7 +218,7 @@
 	justify-self: center;
 	font-size: 12px;
 }
-.post-type-li:last-child
+.post-type-li:last-child,
 .cat-li:last-child,
 .author-li:last-child {
 	margin-bottom: 20px;
@@ -226,14 +230,20 @@
 .author-li__inner {
 	cursor: pointer;
 	padding: 10px 20px;
-	border: 2px solid transparent;
+	border: 1px solid transparent;
 	text-transform: capitalize;
 	color: #5e5e5e;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+	transition: all .3s;
+	border-radius: 5px;
 }
 .post-type-li__inner:hover,
 .cat-li__inner:hover,
 .author-li__inner:hover {
-	box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.18);
+	/*box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.18);*/
+	box-shadow: 0px 8px 24px rgba(149, 157, 165, 0.2);
+	border: 1px solid rgba(208, 204, 204, 0.3);
+
 }
 
 .author-li__inner {
@@ -294,6 +304,7 @@
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
 	width: 100%;
+	grid-gap: 30px;
 }
 .talash-popup__input.show h2.talash-title {
 	font-size: 18px;
@@ -347,16 +358,21 @@
 	display: none;
 }
 .date-range .date-range__input {
-    border: none;
+    /*border: none;*/
     font-size: 12.9px;
 	color: #9e9e9e;
-	box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.3);
+	box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.2);
 	cursor: pointer;
 	border-radius: 5px;
 	padding: 5px;
+	transition: all 0.3s;
+	border: 1px solid transparent;
+
 }
 .date-range__input:hover {
-	box-shadow: 3px 2px 20px rgba(0, 0, 0, 0.25);
+	/*box-shadow: 3px 2px 20px rgba(0, 0, 0, 0.25);*/
+	box-shadow: 0px 8px 24px rgba(149, 157, 165, .20);
+	border: 1px solid rgba(208, 204, 204, 0.3);
 }
 
 .daterangepicker {
@@ -456,7 +472,7 @@
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	grid-gap: 10px;
-	padding: 30px 25px 0;
+	padding: 30px 25px;
 	height: calc(360px - 40px);
 	overflow-y: scroll;
 }
@@ -466,6 +482,13 @@
     grid-template-columns: .36fr 1fr;
     padding: 10px;
     grid-column-gap: 10px;
+	box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+	border-radius: 5px;
+	height: 100px;
+	transition: all 0.3s;
+}
+.talash-card:hover{
+	box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 .talash-thumbnail {
 	width: 80px;
