@@ -26,6 +26,9 @@ I’m looking for your suggestion and feedback on how I can help you in a better
 Feel free to share your opinion And please don’t forget to share your feelings through ⭐️⭐️⭐️⭐️⭐️ ratting
 >💬 [Chat](https://fb.me/sourav926) | 📧 [Contact](mailto:keramotul.islam@gmail.com) | 👨‍💻 [Free Support](https://wordpress.org/support/plugin/talash/) | 🌟 [Rate Talash](https://wordpress.org/support/plugin/talash/reviews/#new-post)
 
+#### Demo
+[youtube https://www.youtube.com/watch?v=gowApkac_6U]
+
 == Installation ==
 1. Upload the plugin folder to the `/wp-content/plugins/` directory.
 2. Or install the plugin through the WordPress plugins screen directly.
