@@ -1,6 +1,6 @@
 === Talash ===
 Plugin Name: Talash
-Version: 1.1.6
+Version: 1.1.7
 Author: sourav926
 Author URI: https://abmsourav.com/
 Contributors: sourav926, imtiazepu
@@ -8,7 +8,7 @@ Tags: search, advanced-search, advance-search, shortCode, post, cpt
 Requires at least: 4.9
 Tested up to: 5.8
 Requires PHP: 5.6
-Stable tag: 1.1.5
+Stable tag: 1.1.7
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -53,11 +53,16 @@ You'll get search results without page reloading.
 
 == Changelog ==
 
+= 1.1.7 - 25-12-2021 =
+- Banner image changed
+
 = 1.1.6 - 22-09-2021 =
 - Fix: Not found heading font size added.
 - Fix: Popup height added in px.
 - Fix: Search by log space issue fixed.
 
 == Upgrade Notice ==
+
+1.1.7 - Minor change.
 
 1.1.6 - Some Frontend issues fix.
