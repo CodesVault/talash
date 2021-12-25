@@ -1,10 +1,10 @@
-=== Talash ===
-Plugin Name: Talash
+=== Talash - Advanced Search Plugin ===
+Plugin Name: Talash - Advanced Search Plugin
 Version: 1.1.7
 Author: sourav926
 Author URI: https://abmsourav.com/
 Contributors: sourav926, imtiazepu
-Tags: search, advanced-search, advance-search, shortCode, post, cpt
+Tags: search, advanced, advanced-search, advance-search, shortCode, post, cpt
 Requires at least: 4.9
 Tested up to: 5.8
 Requires PHP: 5.6
