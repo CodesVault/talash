@@ -17,6 +17,8 @@ jobs:
     - name: WordPress Plugin Deploy
       id: deploy
       uses: 10up/action-wordpress-plugin-deploy@stable
+      with:
+        generate-zip: true
       env:
         SVN_PASSWORD: ${{ secrets.WP_SVN_PASS }}
         SVN_USERNAME: ${{ secrets.WP_SVN_USER }}
