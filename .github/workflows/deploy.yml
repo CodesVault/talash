@@ -11,8 +11,9 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@main
     - name: Build
-      run: npm install
-      run: npm run build
+      run: |
+        npm install
+        npm run build
     - name: WordPress Plugin Deploy
       id: deploy
       uses: 10up/action-wordpress-plugin-deploy@stable
