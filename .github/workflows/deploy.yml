@@ -3,7 +3,6 @@ on:
   push:
     branches:
     - "main"
-
 jobs:
   tag:
     name: New release
@@ -21,7 +20,7 @@ jobs:
     - name: WordPress Plugin Deploy
       id: deploy
       uses: 10up/action-wordpress-plugin-deploy@stable
-        env:
-          SVN_PASSWORD: ${{ secrets.WP_SVN_PASS }}
-          SVN_USERNAME: ${{ secrets.WP_SVN_USER }}
-          SLUG: talash
+      env:
+        SVN_PASSWORD: ${{ secrets.WP_SVN_PASS }}
+        SVN_USERNAME: ${{ secrets.WP_SVN_USER }}
+        SLUG: talash
